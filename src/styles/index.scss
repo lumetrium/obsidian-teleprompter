@@ -1,0 +1,236 @@
+$color-pack: false;
+$reset: false;
+$body-font-family: #{var(--font-default)};
+
+body {
+  --v-high-emphasis-opacity: 0.9;
+  --v-border-opacity: 0.1;
+  --v-hover-opacity: 0.08;
+  --v-activated-opacity: 0.12;
+  --v-theme-overlay-multiplier: 1;
+  --v-border-color: var(--mono-rgb-100);
+  --v-focus-opacity: 0.1;
+  --v-pressed-opacity: 0.2;
+}
+
+@import 'vuetify/styles';
+
+@import 'vuetify/lib/components/VLocaleProvider/VLocaleProvider';
+@import 'vuetify/lib/components/VSelectionControl/VSelectionControl';
+@import 'vuetify/lib/components/VSelectionControlGroup/VSelectionControlGroup';
+@import 'vuetify/lib/components/VLayout/VLayout';
+@import 'vuetify/lib/components/VLayout/VLayoutItem';
+@import 'vuetify/lib/components/VApp/VApp';
+@import 'vuetify/lib/components/VAppBar/VAppBar';
+@import 'vuetify/lib/components/VTooltip/VTooltip';
+@import 'vuetify/lib/components/VWindow/VWindow';
+@import 'vuetify/lib/components/VBtn/VBtn';
+@import 'vuetify/lib/components/VColorPicker/VColorPicker';
+@import 'vuetify/lib/components/VColorPicker/VColorPickerCanvas';
+@import 'vuetify/lib/components/VColorPicker/VColorPickerEdit';
+@import 'vuetify/lib/components/VColorPicker/VColorPickerPreview';
+@import 'vuetify/lib/components/VColorPicker/VColorPickerSwatches';
+@import 'vuetify/lib/components/VTextField/VTextField';
+@import 'vuetify/lib/components/VMenu/VMenu';
+@import 'vuetify/lib/components/VBadge/VBadge';
+@import 'vuetify/lib/components/VCard/VCard';
+@import 'vuetify/lib/components/VIcon/VIcon';
+@import 'vuetify/lib/components/VList/VList';
+@import 'vuetify/lib/components/VList/VListItem';
+@import 'vuetify/lib/components/VMain/VMain';
+@import 'vuetify/lib/components/VNavigationDrawer/VNavigationDrawer';
+@import 'vuetify/lib/components/VSelect/VSelect';
+@import 'vuetify/lib/components/VSlider/VSlider';
+@import 'vuetify/lib/components/VSlider/VSliderTrack';
+@import 'vuetify/lib/components/VSlider/VSliderThumb';
+@import 'vuetify/lib/components/VTabs/VTabs';
+@import 'vuetify/lib/components/VTabs/VTab';
+@import 'vuetify/lib/components/VSwitch/VSwitch';
+@import 'vuetify/lib/components/VExpansionPanel/VExpansionPanel';
+@import 'vuetify/lib/components/VDivider/VDivider';
+@import 'vuetify/lib/components/VOverlay/VOverlay';
+@import 'vuetify/lib/components/VField/VField';
+@import 'vuetify/lib/components/VAvatar/VAvatar';
+@import 'vuetify/lib/components/VToolbar/VToolbar';
+@import 'vuetify/lib/components/VLabel/VLabel';
+@import 'vuetify/lib/components/VCheckbox/VCheckbox';
+@import 'vuetify/lib/components/VInput/VInput';
+@import 'vuetify/lib/components/VGrid/VGrid';
+@import 'vuetify/lib/components/VImg/VImg';
+@import 'vuetify/lib/components/VItemGroup/VItemGroup';
+@import 'vuetify/lib/components/VSheet/VSheet';
+//@import 'vuetify/lib/components/VChip/VChip';
+//@import 'vuetify/lib/components/VChipGroup/VChipGroup';
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat;
+  box-sizing: inherit;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+[role='button'] {
+  cursor: pointer;
+  color: inherit;
+}
+
+.v-menu > .v-overlay__content > .v-card,
+.v-menu > .v-overlay__content > .v-sheet,
+.v-menu > .v-overlay__content > .v-list,
+.v-sheet {
+  background: var(--color-base-10);
+}
+
+.v-slider-track__fill {
+  background: var(--color-base-100);
+}
+
+.v-slider-track__background {
+  background: var(--color-base-60);
+}
+
+.v-divider {
+  opacity: 1 !important;
+}
+
+.v-select {
+}
+
+.v-input__control {
+}
+
+.v-tooltip {
+  z-index: var(--layer-tooltip);
+
+  .v-overlay__content {
+    max-width: 400px;
+    display: block;
+    text-align: center;
+    white-space: pre-line;
+
+    background: rgba(#000000, 0.9);
+    color: white;
+    border-radius: var(--radius-s);
+    font-size: var(--font-smaller);
+    font-weight: var(--bold-weight);
+    padding: calc(var(--tag-padding-y) * 1.5) calc(var(--tag-padding-x) * 1.5);
+    text-transform: none;
+    text-transform: initial;
+    width: auto;
+    transition-duration: var(--anim-duration-moderate) !important;
+    transition-timing-function: var(--anim-motion-jumpy) !important;
+    transform-origin: center center !important;
+  }
+
+  &:not(.v-overlay--active) .v-overlay__content {
+    opacity: 0;
+    transition: none;
+  }
+}
+
+.v-btn {
+  text-transform: none;
+  letter-spacing: normal;
+  box-shadow: none;
+  &:hover,
+  &:active,
+  &:focus-within {
+    box-shadow: none;
+  }
+}
+
+.v-slider-thumb__label {
+  &:before {
+    color: var(--color-base-70);
+  }
+  background: var(--color-base-70);
+  color: var(--color-base-00);
+}
+
+.text-accent {
+  color: var(--text-accent);
+}
+
+.drag-handle {
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.v-switch {
+  .v-switch__thumb {
+    background: var(--color-base-70);
+    color: var(--color-base-70);
+    &.bg-accent {
+      background: var(--checkbox-color);
+      color: var(--checkbox-color);
+    }
+  }
+  .v-switch__track {
+    background: var(--color-base-70);
+    &.bg-accent {
+      background: var(--checkbox-color);
+    }
+  }
+}
+
+.v-field,
+.v-field.v-field--variant-plain {
+  --v-field-padding-top: 0;
+  --v-field-padding-bottom: 0;
+  --v-field-input-padding-bottom: 0;
+  --v-field-input-padding-top: 0;
+  --v-field-padding-end: 5px;
+  --v-field-padding-start: 5px;
+  --v-input-control-height: var(--input-height);
+
+  background: var(--background-modifier-form-field);
+  border: var(--input-border-width) solid var(--background-modifier-border);
+  color: var(--text-normal);
+  font-family: inherit;
+  padding: var(--size-4-1) var(--size-4-2);
+  font-size: var(--font-ui-small);
+  border-radius: var(--input-radius);
+  outline: none;
+  transition: 0.15s opacity cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: opacity, border-color, box-shadow;
+
+  &.v-field--focused {
+    box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
+  }
+
+  &:hover {
+    border-color: var(--background-modifier-border-hover);
+  }
+
+  .v-field__input {
+    padding-top: 0;
+    align-items: center;
+    align-self: center;
+    height: var(--v-input-control-height);
+
+    --v-input-chips-margin-top: 4px;
+    --v-input-chips-margin-bottom: 4px;
+  }
+
+  .v-field-label {
+    margin: auto;
+    top: 0;
+    bottom: 0;
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .v-field__append-inner {
+    align-items: center;
+  }
+}
