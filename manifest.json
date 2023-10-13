@@ -1,0 +1,10 @@
+{
+	"id": "teleprompter",
+	"name": "Teleprompter",
+	"version": "1.0.0",
+	"minAppVersion": "1.2.8",
+	"description": "Teleprompter window for live presentations and video production.",
+	"author": "Lumetrium",
+	"authorUrl": "https://www.lumetrium.com",
+	"isDesktopOnly": false
+}
