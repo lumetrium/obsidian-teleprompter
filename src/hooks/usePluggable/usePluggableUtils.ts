@@ -122,18 +122,18 @@ export function usePluggableUtils() {
     const rawState = toRaw(source)
     Object.entries(target).forEach((entry) => {
       const [key, value] = entry as [keyof S, unknown]
-      const originalStateValue = rawState[key]
+      const sourceStateValue = rawState[key]
       const extendWithValue = (extendWith as S)?.[key]
 
-      if (isRef(originalStateValue)) {
-        target[key] = originalStateValue
+      if (isRef(sourceStateValue)) {
+        target[key] = sourceStateValue
       } else if (typeof value === 'object') {
-        merge(value, originalStateValue, extendWithValue)
+        merge(value, sourceStateValue, extendWithValue)
       } else if (
         extendWithValue !== undefined ||
-        originalStateValue !== undefined
+        sourceStateValue !== undefined
       ) {
-        target[key] = extendWithValue ?? originalStateValue
+        target[key] = extendWithValue ?? sourceStateValue
       }
     })
   }
@@ -153,7 +153,7 @@ export function usePluggableUtils() {
   ): Plugins {
     plugins = unref(plugins)
     const list = Array.isArray(plugins) ? plugins : Object.values(plugins)
-    for (const plugin of list) plugin.state = cloneDeep(plugin.defaults)
+    for (const plugin of list) extendState(plugin.state, plugin.defaults)
     return plugins
   }
 

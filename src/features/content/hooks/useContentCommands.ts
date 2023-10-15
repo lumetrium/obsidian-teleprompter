@@ -15,12 +15,12 @@ export function useContentCommands() {
     return [
       {
         id: 'content:scroll-up',
-        name: 'Scroll up',
+        name: 'Scroll up 50 pixels',
         callback: () => store.requestToScrollBy(-50),
       },
       {
         id: 'content:scroll-down',
-        name: 'Scroll down',
+        name: 'Scroll down 50 pixels',
         callback: () => store.requestToScrollBy(50),
       },
       {

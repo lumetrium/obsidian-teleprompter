@@ -21,10 +21,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, toRefs } from 'vue'
+import {
+  computed,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  toRefs,
+  watchEffect,
+} from 'vue'
 import Content from '../content/Content.vue'
-import { useResizeObserver } from '@vueuse/core'
 import { useContentFeature } from '@/features/content'
+import { usePanelStore } from '@/features/panel/store/panel.store'
 
 const contentStore = useContentFeature().useStore()
 
@@ -37,9 +44,9 @@ const viewportYPos = ref(0)
 
 const mapWidth = ref<number>()
 
-useResizeObserver(map, (entries) => {
-  mapWidth.value = entries[0].contentRect.width
-})
+const { state } = usePanelStore()
+
+watchEffect(() => (mapWidth.value = state.value.width))
 
 function onDrag(e) {
   if (!isDragging.value || (!e.pageX && !e.pageY)) return
@@ -144,7 +151,6 @@ onBeforeUnmount(() => {
   position: relative;
   overflow: hidden;
 }
-
 
 .pagemap-content {
   overflow: hidden;

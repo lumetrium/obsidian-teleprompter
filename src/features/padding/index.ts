@@ -24,9 +24,9 @@ export const usePaddingFeature = defineFeature('padding', (id) => {
     defaults: {
       label,
       desc,
-      value: value.value,
-      resetValue: value.value,
-      units: units.value,
+      value: value.value.slice(),
+      resetValue: value.value.slice(),
+      units: units.value.slice(),
       labels: ['Top', 'Right', 'Bottom', 'Left'],
       min: [0, 0, 0, 0],
       max: [100, 100, 100, 100],

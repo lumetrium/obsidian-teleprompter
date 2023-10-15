@@ -32,6 +32,19 @@ export function useContentDimensionsObserver(
   useResizeObserver(element, (entries) => persistDimensionsDebounced())
   useScroll(element, { onScroll: persistDimensions })
 
+
+/*  const resizeObserver = new ResizeObserver((entries) => {
+    persistDimensionsDebounced()
+  })
+
+  watch(element, (el) => {
+    resizeObserver.observe(unref(el))
+  }, { immediate: true })
+
+  onBeforeUnmount(() => {
+    resizeObserver.unobserve()
+  })*/
+
   watch(
     () => store.scrollBy,
     ({ deltaY }) => {

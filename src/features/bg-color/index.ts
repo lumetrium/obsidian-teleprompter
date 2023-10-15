@@ -7,7 +7,7 @@ import BgColorIcon from '@/features/bg-color/BgColorIcon.vue'
 
 export const useBgColorFeature = defineFeature('bg-color', (id) => {
   const value = ref(null)
-  const label = 'Background Color'
+  const label = 'Background color'
   const desc = 'Content\'s background color'
 
   useControlFeature().use({

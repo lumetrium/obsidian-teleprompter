@@ -20,6 +20,11 @@ const { value, presets } = toRefs(state.value)
 
 const picker = ref()
 
+// NOTICE:
+// width="100%" doesn't work when tab the app is open in a separate window
+// this is likely due to a bug with ResizeObserver in Obsidian environment
+// using activeDocument to obtain the element does not help
+
 function updateValue(color: unknown) {
   const hexa = color.toString()
   if (!value.value && hexa === '#FFFFFF') {

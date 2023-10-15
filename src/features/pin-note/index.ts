@@ -6,7 +6,7 @@ import { ref } from 'vue'
 
 export const usePinNoteFeature = defineFeature('pin-note', (id) => {
   const value = ref(false)
-  const label = 'Pin Note'
+  const label = 'Pin note'
   const desc = 'Preserve content when switching focus to other notes'
 
   useControlFeature().use({

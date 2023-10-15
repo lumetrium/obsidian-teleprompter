@@ -1,5 +1,8 @@
 import { computed, type Ref, unref } from 'vue'
-import type { ControlTypeType, PluggableControl } from '@/features/control/types'
+import type {
+  ControlTypeType,
+  PluggableControl,
+} from '@/features/control/types'
 import { ControlType } from '@/features/control/enums'
 import { flatten } from 'lodash'
 import type { Command } from '@/features/commands/types'
@@ -59,17 +62,17 @@ export function getControlSliderCommands(
   return [
     {
       id: `control:${control.id}:up`,
-      name: `${getLabel(control)} Up`,
+      name: `${getLabel(control)} - increase with step ${control.state.step}`,
       callback: () => (control.state.value += control.state.step),
     },
     {
       id: `control:${control.id}:down`,
-      name: `${getLabel(control)} Down`,
+      name: `${getLabel(control)} - decrease with step ${control.state.step}`,
       callback: () => (control.state.value -= control.state.step),
     },
     {
       id: `control:${control.id}:reset`,
-      name: `${getLabel(control)} Reset`,
+      name: `${getLabel(control)} - reset`,
       callback: () => (control.state.value = control.state.resetValue),
     },
   ]
@@ -79,8 +82,8 @@ export function getControlMultiSliderCommands(
   control: PluggableControl<typeof ControlType.MULTI_SLIDER>,
 ): Command[] {
   function getMultiSliderItemLabel(i: number) {
-    const label = control.state.labels[i]
-    const defaultLabel = control.defaults.labels[i]
+    const label = control.state.labels[i]?.toLowerCase()
+    const defaultLabel = control.defaults.labels[i]?.toLowerCase()
     return label && label !== defaultLabel
       ? `${defaultLabel} (${label})`
       : defaultLabel
@@ -90,17 +93,23 @@ export function getControlMultiSliderCommands(
     control.state.value.map((item, i) => [
       {
         id: `control:${control.id}:${i}:up`,
-        name: `${getLabel(control)} ${getMultiSliderItemLabel(i)} Up`,
+        name: `${getLabel(control)} ${getMultiSliderItemLabel(
+          i,
+        )} - increase with step ${control.state.step[i]}`,
         callback: () => (control.state.value[i] += control.state.step[i]),
       },
       {
         id: `control:${control.id}:${i}:down`,
-        name: `${getLabel(control)} ${getMultiSliderItemLabel(i)} Down`,
+        name: `${getLabel(control)} ${getMultiSliderItemLabel(
+          i,
+        )} - decrease with step ${control.state.step[i]}`,
         callback: () => (control.state.value[i] -= control.state.step[i]),
       },
       {
         id: `control:${control.id}:${i}:reset`,
-        name: `${getLabel(control)} ${getMultiSliderItemLabel(i)} Reset`,
+        name: `${getLabel(control)} ${getMultiSliderItemLabel(
+          i,
+        )} - reset`,
         callback: () => (control.state.value[i] = control.state.resetValue[i]),
       },
     ]),
@@ -113,23 +122,18 @@ export function getControlToggleCommands(
   return [
     {
       id: `control:${control.id}:true`,
-      name: `${getLabel(control)} On`,
+      name: `${getLabel(control)} - toggle on`,
       callback: () => (control.state.value = true),
     },
     {
       id: `control:${control.id}:false`,
-      name: `${getLabel(control)} Off`,
+      name: `${getLabel(control)} - toggle off`,
       callback: () => (control.state.value = false),
     },
     {
       id: `control:${control.id}:toggle`,
-      name: `${getLabel(control)} Toggle`,
+      name: `${getLabel(control)} - toggle`,
       callback: () => (control.state.value = !control.state.value),
-    },
-    {
-      id: `control:${control.id}:reset`,
-      name: `${getLabel(control)} Reset`,
-      callback: () => (control.state.value = control.state.resetValue),
     },
   ]
 }
@@ -152,7 +156,7 @@ export function getControlSelectCommands(
   return [
     {
       id: `control:${control.id}:reset`,
-      name: `${getLabel(control)} Reset`,
+      name: `${getLabel(control)} - reset`,
       callback: () => (control.state.value = control.state.resetValue),
     },
   ]
@@ -164,7 +168,7 @@ export function getControlDefaultCommands(
   return [
     {
       id: `control:${control.id}:reset`,
-      name: `${getLabel(control)} Reset`,
+      name: `${getLabel(control)} - reset`,
       callback: () => (control.state.value = control.state.resetValue),
     },
   ]

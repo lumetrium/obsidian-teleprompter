@@ -7,7 +7,7 @@ import TextColorIcon from '@/features/text-color/TextColorIcon.vue'
 
 export const useTextColorFeature = defineFeature('text-color', (id) => {
   const value = ref(null)
-  const label = 'Text Color'
+  const label = 'Text color'
   const desc = 'Content\'s text color'
 
   useControlFeature().use({

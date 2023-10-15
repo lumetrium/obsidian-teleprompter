@@ -9,7 +9,7 @@ export const useFontFamilyFeature = defineFeature('font-family', (id) => {
   const DEFAULT_FONT_ID = 'Default'
 
   const value = ref(DEFAULT_FONT_ID)
-  const label = 'Font Family'
+  const label = 'Font family'
   const desc = 'Typeface for text elements'
 
   useControlFeature().use({

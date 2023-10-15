@@ -40,7 +40,7 @@ const [useProvideSettingItemStore, useDefaultSettingItemStore] =
         if (settingStore.setting.value.restoreItemDefaults) {
           settingStore.setting.value.restoreItemDefaults(item)
         } else {
-          extendState(itemRef.value.state, item.defaults)
+          extendState(itemRef.value.state, itemRef.value.defaults)
         }
       },
     }

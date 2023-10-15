@@ -11,6 +11,7 @@ import type { Modify } from '@/utils/utility-types'
 import { createInjectionState } from '@/utils/createInjectionState'
 import { unref } from 'vue'
 import { useControlComponents } from '@/features/control/hooks/useControlComponents'
+import cloneDeep from 'lodash/cloneDeep'
 
 type TypedSettingItemStore<State> = Modify<
   ReturnType<typeof useDefaultControlStore>,
@@ -36,6 +37,10 @@ const [useProvideControlStore, useDefaultControlStore] = createInjectionState(
       },
     })
 
+    function reset() {
+      state.value.value = cloneDeep(state.value.resetValue)
+    }
+
     return {
       control,
       id: control.value.id,
@@ -44,6 +49,7 @@ const [useProvideControlStore, useDefaultControlStore] = createInjectionState(
       defaults: computed(() => control.value.defaults),
       state,
       components: useControlComponents(control),
+      reset,
     }
   },
 )

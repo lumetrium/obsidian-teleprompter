@@ -26,11 +26,10 @@
 <script setup lang="ts">
 import { useSettingsFeature } from '@/features/settings'
 import SettingsList from '@/features/settings/components/list/SettingsList.vue'
-import { computed, ref, toRefs, watch } from 'vue'
+import { ref, toRefs } from 'vue'
 
 const store = useSettingsFeature().useStore()
 const { tabs } = toRefs(store)
-// console.warn(tabs.value)
 
 const currentTabId = ref(tabs.value[0]?.id)
 </script>

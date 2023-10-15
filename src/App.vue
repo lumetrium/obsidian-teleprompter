@@ -1,9 +1,7 @@
 <template>
   <v-app>
-    <v-layout>
-      <AppPanels />
-      <AppBody />
-    </v-layout>
+    <AppPanels />
+    <AppBody />
   </v-app>
 </template>
 

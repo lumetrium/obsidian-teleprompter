@@ -1,4 +1,5 @@
 
+export const APP_ID = 'teleprompter'
 export const VIEW_TYPE = 'teleprompter'
 
 export const APP_ATTR = 'teleprompter'
@@ -12,4 +13,4 @@ export const AUTHOR_NAME = 'Lumetrium'
 export const AUTHOR_WEBSITE = 'www.lumetrium.com'
 
 export const APP_NAME = 'Teleprompter'
-export const APP_WEBSITE = 'www.github.com/lumetrium/teleprompter'
+export const APP_WEBSITE = 'www.github.com/lumetrium/obsidian-teleprompter'

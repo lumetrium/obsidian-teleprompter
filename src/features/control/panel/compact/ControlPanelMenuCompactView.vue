@@ -3,7 +3,7 @@
     :title="state.label"
     :location="menuLocation"
     :transition="menuTransition"
-    @reset="state.value = state.resetValue"
+    @reset="reset"
   >
     <template #icon>
       <ControlIcon />
@@ -20,6 +20,6 @@ import ControlView from '@/features/control/views/ControlView.vue'
 import {usePanelStore} from '@/features/panel/store/panel.store'
 import type {PluggableControl} from '@/features/control/types'
 
-const { state } = useControlStore()
+const { state, reset } = useControlStore()
 const { menuLocation, menuTransition } = usePanelStore<PluggableControl>()
 </script>

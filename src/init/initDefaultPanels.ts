@@ -68,12 +68,12 @@ export function initDefaultPanels() {
 
   setDefaultPanels([
     createPanel(controlPanelPlugin, () => ({
-      name: 'Control Panel',
+      name: 'Control panel',
       location: PanelLocation.TOP,
       items: controlPanelItems,
     })),
     createPanel(controlPanelPlugin, () => ({
-      name: 'Control Side-Panel',
+      name: 'Control side-panel',
       location: PanelLocation.LEFT,
       alignment: PanelAlignment.CENTER,
       width: 250,
@@ -81,10 +81,10 @@ export function initDefaultPanels() {
       items: controlPanelItems,
     })),
     createPanel(pagemapPanelPlugin, () => ({
-      name: 'Page Minimap',
+      name: 'Page minimap',
     })),
     createPanel(pagemapPanelPlugin, () => ({
-      name: 'Page Minimap Extra',
+      name: 'Page minimap extra',
       location: PanelLocation.LEFT,
       width: 80,
       isOpen: false,

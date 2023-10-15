@@ -9,25 +9,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { usePanelStore } from '@/features/panel/store/panel.store'
 import { PanelLocation } from '@/features/panel/constants'
 
 const isResizing = ref(false)
 const pos = ref(0)
 const el = ref()
-const body = computed(() => el.value.closest('body'))
 
 const { state, isVertical, isHorizontal } = usePanelStore()
 
 onMounted(() => {
-  document.addEventListener('mousemove', onMouseMove)
-  document.addEventListener('mouseup', onMouseUp)
+  window.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('mouseup', onMouseUp)
 })
 
 onBeforeUnmount(() => {
-  document.removeEventListener('mousemove', onMouseMove)
-  document.removeEventListener('mouseup', onMouseUp)
+  window.removeEventListener('mousemove', onMouseMove)
+  window.removeEventListener('mouseup', onMouseUp)
 })
 
 function onMouseUp() {

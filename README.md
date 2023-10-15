@@ -1,5 +1,13 @@
 <h1 align="center">Obsidian Teleprompter</h1>
 
+<div align="center">
+
+[![](https://img.shields.io/github/v/release/lumetrium/obsidian-teleprompter?style=for-the-badge)](https://github.com/lumetrium/obsidian-teleprompter/releases/latest)
+![](https://img.shields.io/github/downloads/lumetrium/obsidian-teleprompter/total?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/lumetrium/obsidian-teleprompter?style=for-the-badge)
+
+</div>
+<br/>
 <p align="center">
   <img src="./assets/logos/teleprompter.png" height="140"/>
 </p>
@@ -16,32 +24,36 @@ Teleprompter window will display the contents of the note in a large,
 easy-to-read format. It will automatically scroll as you read,
 allowing you to maintain a steady reading pace.
 
+<p align="center">
+  <img src="./assets/screenshots/main.png"/>
+</p>
+
 ## Features
 
 ### Controls
 
-- **Play / Pause** - toggle auto-scroll
-- **Pin Note** - preserve content when switching focus to other notes
+- **Play** - toggle auto-scroll
+- **Pin note** - preserve content when switching focus to other notes
 - **Speed** - scroll speed
-- **Font Size** - size of the text
-- **Line Height** - space between lines
-- **Letter Spacing** - space between letters
-- **Font Family** - font used for the text
+- **Font size** - size of the text
+- **Line height** - space between lines
+- **Letter spacing** - space between letters
+- **Font family** - font used for the text
 - **Padding** - space between the text and the edges of the window
-- **Flip Horizontally** - flip the text horizontally
-- **Flip Vertically** - flip the text vertically
-- **Text Color** - color of the text
-- **Background Color** - color of the background
-- **View Mode** - choose between 2 different content display modes: "Markdown" or "Plain Text"
-- **Open Settings** - a button that opens the plugin settings
+- **Flip horizontally** - flip the text horizontally
+- **Flip vertically** - flip the text vertically
+- **Text color** - color of the text
+- **Background color** - color of the background
+- **View mode** - choose between 2 different content display modes: "Markdown" or "Plain text"
+- **Open settings** - button that opens the plugin's settings
 
 ### Panels
 
 You can add as many panels as you want and customize their content, size,
 position, and more. The available panels are:
 
-- **Control Panel**: Contains a list of controls that you can add, remove, and reorder.
-- **Page Minimap**: Displays a minimap of the content for
+- **Control panel**: Contains a list of controls that you can add, remove, configure, and reorder.
+- **Page minimap**: Displays a minimap of the content for
   easy navigation and better context awareness.
 
 ### Hotkeys
@@ -70,10 +82,10 @@ Settings: Panels tab
 Settings: Controls tab
 <img src="./assets/screenshots/settings-controls.png"/>
 
-Settings: expanded Font Size control in the Controls tab
+Settings: expanded Font size control in the Controls tab
 <img src="./assets/screenshots/settings-controls-expanded.png"/>
 
-Settings: expanded Control Panel in the Panels tab in white theme (if you're into that)
+Settings: expanded Control panel in the Panels tab in white theme (if you're into that)
 <img src="./assets/screenshots/settings-panels-expanded-white.png"/>
 
 Hotkeys
@@ -90,7 +102,8 @@ Only manual installation is supported at the moment.
 1. Download the latest `zip` from the latest [Github Release](https://github.com/lumetrium/obsidian-teleprompter/releases)
 2. Extract obsidian-teleprompter folder from the zip
    to your vault's plugins folder `<vault>/.obsidian/plugins/` (Note: `.obsidian` folder may be hidden, you need to show it firstly)
-3. Open Settings > community plugins, and reload and activate the plugin below installed plugins list
+3. Restart obsidian
+4. Open "Settings" -> "Community plugins" and activate "Teleprompter"
 
 For details see [the forums](https://forum.obsidian.md/t/plugins-mini-faq/7737).
 

@@ -47,7 +47,7 @@ export const useControlFeature = defineFeature('control', (id) => {
     id,
     plugins: pluginsWithStateAsDefaults,
     defaults: {
-      name: 'Control Panel',
+      name: 'Control panel',
       location: PanelLocation.TOP,
       height: 48,
       minHeight: 48,

@@ -6,7 +6,7 @@ import PlayIcon from '@/features/play/PlayIcon.vue'
 
 export const usePlayFeature = defineFeature('play', (id) => {
   const value = ref(false)
-  const label = 'Play / Pause'
+  const label = 'Play'
   const desc = 'Toggle auto-scroll'
 
   useControlFeature().use({

@@ -7,8 +7,9 @@ import { useCommandFeature } from '@/features/commands'
 import { toRefs, watchEffect } from 'vue'
 import { useContentFeature } from '@/features/content'
 import { usePinNoteFeature } from '@/features/pin-note'
-import { APP_NAME, VIEW_TYPE } from '@/constants'
+import { APP_ID, APP_NAME, VIEW_TYPE } from '@/constants'
 import { initDefaultPanels } from '@/init/initDefaultPanels'
+import { getIsDevMode } from '@/utils/getIsDevMode'
 
 export default class TeleprompterPlugin extends Plugin {
   settings: Record<string, any> = {}
@@ -35,7 +36,9 @@ export default class TeleprompterPlugin extends Plugin {
     await this.registerFeatures()
     this.registerView(VIEW_TYPE, (leaf) => new TeleprompterView(leaf))
 
-    // this.app.setting.openTabById('teleprompter') // only while developing
+    if (getIsDevMode()) {
+      this.app.setting.openTabById(APP_ID)
+    }
   }
 
   async loadSettings() {

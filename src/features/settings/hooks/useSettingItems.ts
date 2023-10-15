@@ -29,11 +29,9 @@ export function useSettingItems<P extends Pluggable>(options: {
       source.value.push(onAddItem?.(plugin) ?? (clonePlugin(plugin) as P))
     }
   }
-
   function restoreDefaults() {
     source.value = getDefaultItems()
   }
-
   function restoreItemDefaults(item: SettingItem<P['state'], P>) {
     const index = source.value.indexOf(unref(item.target))
     if (index === -1) return

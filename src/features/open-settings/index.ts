@@ -15,7 +15,7 @@ export const useOpenSettingsFeature = defineFeature('open-settings', (id) => {
     icon: mdiCog,
     type: ControlType.ACTION,
     defaults: {
-      label: 'Open Settings',
+      label: 'Open settings',
       desc: 'Open plugin\'s tab in Obsidian settings',
     },
     state: {

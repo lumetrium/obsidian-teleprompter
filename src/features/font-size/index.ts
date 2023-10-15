@@ -7,7 +7,7 @@ import { mdiFormatSize } from '@mdi/js'
 
 export const useFontSizeFeature = defineFeature('font-size', (id) => {
   const value = ref(60)
-  const label = 'Font Size'
+  const label = 'Font size'
   const desc = 'Size of the text'
 
   useControlFeature().use({

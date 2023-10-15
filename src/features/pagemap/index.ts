@@ -10,7 +10,7 @@ export const usePagemapFeature = defineFeature('pagemap', (id) => {
     id,
     locations: [PanelLocation.RIGHT, PanelLocation.LEFT],
     defaults: {
-      name: 'Page Minimap',
+      name: 'Page minimap',
       location: PanelLocation.RIGHT,
       isOpen: true,
       icon: mdiGlassStange,

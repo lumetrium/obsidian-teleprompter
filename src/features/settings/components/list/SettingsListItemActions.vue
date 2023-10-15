@@ -25,7 +25,7 @@ const addableItems = computed(() => unref(setting.value.addableItems) ?? [])
 .settings-list-item-actions {
   display: flex;
   justify-content: flex-end;
-  margin: 1em 0.3em 0;
+  margin-top: 1em;
   gap: 10px;
 }
 </style>

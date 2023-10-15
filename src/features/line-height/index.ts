@@ -7,7 +7,7 @@ import { mdiFormatLineHeight } from '@mdi/js'
 
 export const useLineHeightFeature = defineFeature('line-height', (id) => {
   const value = ref(1.2)
-  const label = 'Line Height'
+  const label = 'Line height'
   const desc = 'Space between the lines'
 
   useControlFeature().use({

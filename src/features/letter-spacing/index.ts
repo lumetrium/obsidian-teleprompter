@@ -7,7 +7,7 @@ import { mdiFormatLetterSpacing } from '@mdi/js'
 
 export const useLetterSpacingFeature = defineFeature('letter-spacing', (id) => {
   const value = ref(0)
-  const label = 'Letter Spacing'
+  const label = 'Letter spacing'
   const desc = 'Space between the letters'
 
   useControlFeature().use({
