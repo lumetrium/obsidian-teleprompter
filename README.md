@@ -99,7 +99,7 @@ Only manual installation is supported at the moment.
 
 ### Manual Installation
 
-1. Download the latest `zip` from the latest [Github Release](https://github.com/lumetrium/obsidian-teleprompter/releases)
+1. Download the latest `obsidian-teleprompter.zip` from the latest [Github Release](https://github.com/lumetrium/obsidian-teleprompter/releases)
 2. Extract obsidian-teleprompter folder from the zip
    to your vault's plugins folder `<vault>/.obsidian/plugins/` (Note: `.obsidian` folder may be hidden, you need to show it firstly)
 3. Restart obsidian

@@ -13,6 +13,7 @@ import { getIsDevMode } from '@/utils/getIsDevMode'
 
 export default class TeleprompterPlugin extends Plugin {
   settings: Record<string, any> = {}
+
   async onload() {
     await this.loadSettings()
 
