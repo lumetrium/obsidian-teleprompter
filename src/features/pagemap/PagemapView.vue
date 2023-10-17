@@ -16,6 +16,7 @@
       class="pagemap-viewport"
       :style="viewportStyle"
       @mousedown="onDragStart"
+      @touchstart="onDragStart"
     />
   </div>
 </template>
@@ -48,9 +49,14 @@ const { state } = usePanelStore()
 
 watchEffect(() => (mapWidth.value = state.value.width))
 
-function onDrag(e) {
-  if (!isDragging.value || (!e.pageX && !e.pageY)) return
-  const y = e.clientY
+function onTouchMove(e: TouchEvent) {
+  const { clientY, pageY, pageX } = e.touches[0]
+  onDrag({ clientY, pageY, pageX })
+}
+
+function onDrag({ pageX, pageY, clientY }: Partial<MouseEvent & TouchEvent>) {
+  if (!isDragging.value || (!pageX && !pageY)) return
+  const y = clientY
   if (viewportYPos.value === 0) viewportYPos.value = y
   const diff = y - viewportYPos.value
   const diffScaled = diff / viewportToHeightRatio.value
@@ -128,18 +134,16 @@ const viewportStyle = computed(() => {
 
 onMounted(() => {
   window.addEventListener('mouseup', onDragEnd)
-  window.addEventListener('mousemove', onDrag)
-
   window.addEventListener('touchend', onDragEnd)
-  window.addEventListener('touchmove', onDragEnd)
+  window.addEventListener('mousemove', onDrag)
+  window.addEventListener('touchmove', onTouchMove)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('mouseup', onDragEnd)
-  window.removeEventListener('mousemove', onDrag)
-
   window.removeEventListener('touchend', onDragEnd)
-  window.removeEventListener('touchmove', onDragEnd)
+  window.removeEventListener('mousemove', onDrag)
+  window.removeEventListener('touchmove', onTouchMove)
 })
 </script>
 

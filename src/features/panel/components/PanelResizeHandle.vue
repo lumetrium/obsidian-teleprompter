@@ -5,6 +5,7 @@
     :class="{ active: isResizing }"
     :data-location="state.location"
     @mousedown="isResizing = true"
+    @touchstart="isResizing = true"
   />
 </template>
 
@@ -21,13 +22,22 @@ const { state, isVertical, isHorizontal } = usePanelStore()
 
 onMounted(() => {
   window.addEventListener('mousemove', onMouseMove)
+  window.addEventListener('touchmove', onTouchMove)
   window.addEventListener('mouseup', onMouseUp)
+  window.addEventListener('touchend', onMouseUp)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('mousemove', onMouseMove)
+  window.removeEventListener('touchmove', onTouchMove)
   window.removeEventListener('mouseup', onMouseUp)
+  window.removeEventListener('touchend', onMouseUp)
 })
+
+function onTouchMove(e: TouchEvent) {
+  const { clientX, clientY } = e.touches[0]
+  onMouseMove({ clientX, clientY })
+}
 
 function onMouseUp() {
   isResizing.value = false

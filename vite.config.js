@@ -4,10 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import vuetify from 'vite-plugin-vuetify'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    vuetify({ styles: 'none', autoImport: true }),
-  ],
+  plugins: [vue(), vuetify({ styles: 'none', autoImport: true })],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -37,5 +34,6 @@ export default defineConfig({
     setTimeout: 'activeWindow.setTimeout',
     setInterval: 'activeWindow.setInterval',
     requestAnimationFrame: 'activeWindow.requestAnimationFrame',
-  }
+    'process.env.NODE_ENV': JSON.stringify('production'),
+  },
 })
