@@ -100,16 +100,28 @@ Only manual installation is supported at the moment.
 ### Manual Installation
 
 1. Download the latest `obsidian-teleprompter.zip` from the latest [Github Release](https://github.com/lumetrium/obsidian-teleprompter/releases)
-2. Extract obsidian-teleprompter folder from the zip
-   to your vault's plugins folder `<vault>/.obsidian/plugins/` (Note: `.obsidian` folder may be hidden, you need to show it firstly)
-3. Restart obsidian
+2. Extract `obsidian-teleprompter` folder from the zip
+   to your vault's plugins folder `<vault>/.obsidian/plugins/` (note that `.obsidian` folder may be hidden by default)
+3. Restart Obsidian
 4. Open "Settings" -> "Community plugins" and activate "Teleprompter"
 
 For details see [the forums](https://forum.obsidian.md/t/plugins-mini-faq/7737).
 
+## Disclosures
+In accordance with 
+[Obsidian's developer policies](https://docs.obsidian.md/Developer+policies), 
+it is required to transparently disclose the presence of any static ads, 
+such banners and pop-up messages, within the plugin's interface.
+
+This plugin includes a single [static ad](./assets/screenshots/settings-about.png), 
+which is accessible exclusively on the "About" page within the settings. 
+The ad is a link to a [project](https://lumetrium.com/definer) developed by the same 
+author responsible for this plugin. It's important to emphasize that 
+there is no involvement of any third-party advertising.
+
 ## Recommendations
 
-Also check out this browser extension made by the same author:
+Check out this browser extension made by the same author:
 
 <a href="https://lumetrium.com/definer">
   <img src="./assets/logos/definer.png" style="margin-right: 1em" height="40px" align="left"/>
