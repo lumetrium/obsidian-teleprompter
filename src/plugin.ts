@@ -50,9 +50,20 @@ export default class TeleprompterPlugin extends Plugin {
     await this.saveData(this.settings)
   }
 
-  async activateView() {
-    if (this.app.workspace.getLeavesOfType(VIEW_TYPE).length === 0) {
-      await this.app.workspace.getRightLeaf(false).setViewState({
+  async activateView(placement?: 'sidebar' | 'tab' | 'window') {
+    const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE)
+
+    if (placement && leaves.length > 0) {
+      this.app.workspace.detachLeavesOfType(VIEW_TYPE)
+    }
+
+    if (placement || leaves.length === 0) {
+      const leaf =
+        !placement || placement === 'sidebar'
+          ? this.app.workspace.getRightLeaf(false)
+          : this.app.workspace.getLeaf(placement)
+
+      await leaf.setViewState({
         type: VIEW_TYPE,
         active: true,
       })
@@ -88,7 +99,33 @@ export default class TeleprompterPlugin extends Plugin {
       this.app.setting.openTabById('teleprompter')
     })
 
-    const { list: commands } = toRefs(useCommandFeature().useStore())
+    const commandFeature = useCommandFeature()
+    commandFeature.use({
+      id: 'plugin',
+      defaults: {
+        list: [],
+      },
+      state: {
+        list: [
+          {
+            id: 'plugin:open-in-sidebar',
+            name: 'Open in Sidebar',
+            callback: () => this.activateView('sidebar'),
+          },
+          {
+            id: 'plugin:open-in-new-tab',
+            name: 'Open in New Tab',
+            callback: () => this.activateView('tab'),
+          },
+          {
+            id: 'plugin:open-in-new-window',
+            name: 'Open in New Window',
+            callback: () => this.activateView('window'),
+          },
+        ],
+      },
+    })
+    const { list: commands } = toRefs(commandFeature.useStore())
     watchEffect(() => commands.value.forEach((c) => this.addCommand(c)))
 
     initDefaultPanels()

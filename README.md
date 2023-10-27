@@ -111,7 +111,7 @@ For details see [the forums](https://forum.obsidian.md/t/plugins-mini-faq/7737).
 In accordance with 
 [Obsidian's developer policies](https://docs.obsidian.md/Developer+policies), 
 it is required to transparently disclose the presence of any static ads, 
-such banners and pop-up messages, within the plugin's interface.
+such as banners and pop-up messages, within the plugin's interface.
 
 This plugin includes a single [static ad](./assets/screenshots/settings-about.png), 
 which is accessible exclusively on the "About" page within the settings. 
