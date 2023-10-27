@@ -30,7 +30,7 @@ export default defineConfig({
   },
   define: {
     document: 'activeDocument',
-    // window: 'activeWindow',
+    // window: 'activeWindow', // DO NOT UNCOMMENT
     setTimeout: 'activeWindow.setTimeout',
     setInterval: 'activeWindow.setInterval',
     requestAnimationFrame: 'activeWindow.requestAnimationFrame',

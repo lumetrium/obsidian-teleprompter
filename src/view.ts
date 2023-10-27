@@ -1,5 +1,5 @@
 import { ItemView, type WorkspaceLeaf } from 'obsidian'
-import { type App as VueApp, createApp } from 'vue'
+import { type App as VueApp, createApp, watch } from 'vue'
 import App from './App.vue'
 import { createVuetifyWithOptions } from './libs/vuetify'
 import {
@@ -7,11 +7,16 @@ import {
   APP_CLASS,
   APP_NAME,
   VIEW_CLASS,
-  VIEW_TYPE
+  VIEW_TYPE,
 } from '@/constants'
+import { useFullscreenFeature } from '@/features/fullscreen'
+import { useOpenSettingsFeature } from '@/features/open-settings'
 
 export class TeleprompterView extends ItemView {
   vueapp: VueApp
+
+  unloadQueue: (() => void)[] = []
+
   constructor(leaf: WorkspaceLeaf) {
     super(leaf)
   }
@@ -24,6 +29,15 @@ export class TeleprompterView extends ItemView {
   getIcon(): string {
     return 'scroll'
   }
+
+  onload() {
+    this.initFullscreen()
+  }
+
+  onunload() {
+    this.unloadQueue.forEach((u) => u())
+  }
+
   async onOpen() {
     const { contentEl, containerEl } = this
     contentEl.empty()
@@ -50,5 +64,43 @@ export class TeleprompterView extends ItemView {
 
   async onClose() {
     this.vueapp?.unmount()
+  }
+
+  private initFullscreen() {
+    const el = this.containerEl
+
+    const openSettingsFeature = useOpenSettingsFeature()
+    const fullscreenStore = useFullscreenFeature().useStore()
+
+    const unwatch = watch(
+      () => fullscreenStore.value,
+      (value) => {
+        if (value && !isFullscreen()) el.requestFullscreen()
+        else if (!value && isFullscreen()) activeDocument.exitFullscreen()
+      },
+    )
+
+    el.addEventListener('fullscreenchange', update)
+    openSettingsFeature.addEventListener('click', turnOff)
+
+    this.unloadQueue.push(
+      unwatch,
+      () => el.removeEventListener('fullscreenchange', update),
+      () => openSettingsFeature.removeEventListener('click', turnOff),
+    )
+
+    function update() {
+      fullscreenStore.value = isFullscreen()
+    }
+
+    function turnOff() {
+      fullscreenStore.value = false
+    }
+
+    function isFullscreen() {
+      return activeDocument.fullscreenElement === el
+    }
+
+    update()
   }
 }

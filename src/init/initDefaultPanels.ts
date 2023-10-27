@@ -17,6 +17,8 @@ import { usePaddingFeature } from '@/features/padding'
 import { useFlipXFeature } from '@/features/flip/flip-x'
 import { useFlipYFeature } from '@/features/flip/flip-y'
 import type { PluggablePanel } from '@/features/panel/types'
+import {useFullscreenFeature} from '@/features/fullscreen'
+import {useDetachWindowFeature} from '@/features/detach-window'
 
 export function initDefaultPanels() {
   const panelFeatureStore = usePanelFeature().useStore()
@@ -41,6 +43,8 @@ export function initDefaultPanels() {
   const fontSizeFeature = useFontSizeFeature()
   const flipXFeature = useFlipXFeature()
   const flipYFeature = useFlipYFeature()
+  const fullscreenFeature = useFullscreenFeature()
+  const detachWindowFeature = useDetachWindowFeature()
 
   const controlPanelItems = [
     controlPlugins[playFeature.id],
@@ -56,6 +60,8 @@ export function initDefaultPanels() {
     controlPlugins[textColorFeature.id],
     controlPlugins[bgColorFeature.id],
     controlPlugins[contentFeature.id],
+    controlPlugins[detachWindowFeature.id],
+    controlPlugins[fullscreenFeature.id],
     controlPlugins[openSettingsFeature.id],
   ]
 
