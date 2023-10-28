@@ -11,6 +11,7 @@ import {
 } from '@/constants'
 import { useFullscreenFeature } from '@/features/fullscreen'
 import { useOpenSettingsFeature } from '@/features/open-settings'
+import { useOpacityInObsidian } from '@/features/opacity/integrations/useOpacityInObsidian'
 
 export class TeleprompterView extends ItemView {
   vueapp: VueApp
@@ -32,6 +33,16 @@ export class TeleprompterView extends ItemView {
 
   onload() {
     this.initFullscreen()
+
+    const { unload: unloadOpacity } = useOpacityInObsidian({
+      app: this.app,
+      containerEl: this.containerEl,
+      viewSelector: `.${VIEW_CLASS}`,
+    })
+
+    this.unloadQueue.push(
+      unloadOpacity,
+    )
   }
 
   onunload() {
@@ -103,4 +114,5 @@ export class TeleprompterView extends ItemView {
 
     update()
   }
+
 }

@@ -187,4 +187,6 @@ export default class TeleprompterPlugin extends Plugin {
 
     update()
   }
+
+
 }

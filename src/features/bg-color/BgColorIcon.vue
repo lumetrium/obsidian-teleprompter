@@ -1,6 +1,12 @@
 <template>
-  <v-badge :color="color" dot>
-    <v-icon :icon="mdiFormatColorFill" :size="size" />
+  <v-badge
+    :color="color"
+    dot
+  >
+    <v-icon
+      :icon="mdiFormatColorFill"
+      :size="size"
+    />
   </v-badge>
 </template>
 
@@ -15,7 +21,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  size: undefined
+  size: undefined,
 })
 
 const { state } = useControlStore<ControlColorState>()

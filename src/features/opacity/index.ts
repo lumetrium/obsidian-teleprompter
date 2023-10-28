@@ -1,0 +1,37 @@
+import { useControlFeature } from '@/features/control'
+import { ControlType } from '@/features/control/enums'
+import { defineFeature } from '@/features/feature'
+import { ref } from 'vue'
+import OpacityIcon from '@/features/opacity/OpacityIcon.vue'
+
+export const useOpacityFeature = defineFeature('opacity', (id) => {
+  const value = ref(100)
+  const label = 'Opacity'
+  const desc = 'See through the window'
+
+  useControlFeature().use({
+    id,
+    type: ControlType.SLIDER,
+    defaults: {
+      label,
+      desc,
+      value: value.value,
+      resetValue: 100,
+      min: 40,
+      max: 100,
+      step: 1,
+    },
+    state: {
+      value,
+    },
+    components: {
+      icon: () => OpacityIcon,
+    },
+  })
+
+  return {
+    useStore: () => ({
+      value,
+    }),
+  }
+})

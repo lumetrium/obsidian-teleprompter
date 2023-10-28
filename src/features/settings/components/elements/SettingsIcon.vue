@@ -30,3 +30,10 @@ const svgIcon = computed(() => props.icon)
 
 const component = computed(() => props.component?.())
 </script>
+
+
+<style scoped lang="scss">
+.v-badge {
+  vertical-align: middle;
+}
+</style>
