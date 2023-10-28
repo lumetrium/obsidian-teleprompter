@@ -1,6 +1,6 @@
 import type { App } from 'obsidian'
 import { useOpacityFeature } from '@/features/opacity'
-import { watchEffect } from 'vue'
+import {watch, watchEffect} from 'vue'
 
 type BrowserWindow = {
   isDestroyed: () => boolean
@@ -38,7 +38,7 @@ export function useOpacityInObsidian(options: {
     win.setOpacity(opacity)
   }
 
-  const unwatchApply = watchEffect(apply)
+  const unwatchApply = watch(() => opacityStore.value, apply)
   const eventRefs = [
     app.workspace.on('window-open', apply),
     app.workspace.on('window-close', apply),
@@ -46,7 +46,7 @@ export function useOpacityInObsidian(options: {
   ]
 
   function getAllWindows() {
-    return window.require('electron').remote.BrowserWindow.getAllWindows()
+    return (window as any).require('electron').remote.BrowserWindow.getAllWindows()
   }
 
   setTimeout(apply, 500)

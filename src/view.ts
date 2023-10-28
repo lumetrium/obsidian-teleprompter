@@ -1,5 +1,5 @@
 import { ItemView, type WorkspaceLeaf } from 'obsidian'
-import { type App as VueApp, createApp, watch } from 'vue'
+import { type App as VueApp, createApp } from 'vue'
 import App from './App.vue'
 import { createVuetifyWithOptions } from './libs/vuetify'
 import {
@@ -9,9 +9,8 @@ import {
   VIEW_CLASS,
   VIEW_TYPE,
 } from '@/constants'
-import { useFullscreenFeature } from '@/features/fullscreen'
-import { useOpenSettingsFeature } from '@/features/open-settings'
 import { useOpacityInObsidian } from '@/features/opacity/integrations/useOpacityInObsidian'
+import { useFullscreenInObsidian } from '@/features/fullscreen/integrations/useFullscreenInObsidian'
 
 export class TeleprompterView extends ItemView {
   vueapp: VueApp
@@ -32,16 +31,12 @@ export class TeleprompterView extends ItemView {
   }
 
   onload() {
-    this.initFullscreen()
-
-    const { unload: unloadOpacity } = useOpacityInObsidian({
-      app: this.app,
-      containerEl: this.containerEl,
-      viewSelector: `.${VIEW_CLASS}`,
-    })
+    const { containerEl, app } = this
+    const viewSelector = `.${VIEW_CLASS}`
 
     this.unloadQueue.push(
-      unloadOpacity,
+      useFullscreenInObsidian({ containerEl }).unload,
+      useOpacityInObsidian({ app, containerEl, viewSelector }).unload,
     )
   }
 
@@ -76,43 +71,4 @@ export class TeleprompterView extends ItemView {
   async onClose() {
     this.vueapp?.unmount()
   }
-
-  private initFullscreen() {
-    const el = this.containerEl
-
-    const openSettingsFeature = useOpenSettingsFeature()
-    const fullscreenStore = useFullscreenFeature().useStore()
-
-    const unwatch = watch(
-      () => fullscreenStore.value,
-      (value) => {
-        if (value && !isFullscreen()) el.requestFullscreen()
-        else if (!value && isFullscreen()) activeDocument.exitFullscreen()
-      },
-    )
-
-    el.addEventListener('fullscreenchange', update)
-    openSettingsFeature.addEventListener('click', turnOff)
-
-    this.unloadQueue.push(
-      unwatch,
-      () => el.removeEventListener('fullscreenchange', update),
-      () => openSettingsFeature.removeEventListener('click', turnOff),
-    )
-
-    function update() {
-      fullscreenStore.value = isFullscreen()
-    }
-
-    function turnOff() {
-      fullscreenStore.value = false
-    }
-
-    function isFullscreen() {
-      return activeDocument.fullscreenElement === el
-    }
-
-    update()
-  }
-
 }

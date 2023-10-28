@@ -89,15 +89,7 @@ export const useControlFeature = defineFeature('control', (id) => {
     restoreDefaults: () => applyDefaults(plugins),
   })
 
-  useCommandFeature().use({
-    id,
-    defaults: {
-      list: [],
-    },
-    state: {
-      list: useControlCommands(pluginsList).commands,
-    },
-  })
+  useCommandFeature().use(id, useControlCommands(pluginsList).commands)
 
   return {
     use: <T extends ControlTypeType>(

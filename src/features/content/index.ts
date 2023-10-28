@@ -65,15 +65,7 @@ export const useContentFeature = defineFeature('content', (id) => {
     })
   })
 
-  useCommandFeature().use({
-    id,
-    defaults: {
-      list: [],
-    },
-    state: {
-      list: useContentCommands().commands,
-    },
-  })
+  useCommandFeature().use(id, useContentCommands().commands)
 
   return {
     useView,
