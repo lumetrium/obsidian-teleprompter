@@ -2,6 +2,7 @@
   <AccordionItem
     v-model:state="isEnabled"
     :title="name"
+    :subtitle="desc"
     :icon-size="25"
     :draggable="draggable"
   >
@@ -53,7 +54,7 @@ const { item } = toRefs(props)
 const store = useProvideSettingItemStore(item)
 const settingStore = useSettingStore()
 
-const { name, icon, components, state, id, index, isEnabled } = store
+const { name, desc, icon, components, state, id, index, isEnabled } = store
 const contentComponent = computed(() => components?.content?.())
 
 const canRemove = computed(() => !!settingStore.setting.value.removeItem)

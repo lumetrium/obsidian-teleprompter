@@ -11,10 +11,10 @@ import {
 } from '@/constants'
 import { useOpacityInObsidian } from '@/features/opacity/integrations/useOpacityInObsidian'
 import { useFullscreenInObsidian } from '@/features/fullscreen/integrations/useFullscreenInObsidian'
+import { useWakeLockInObsidian } from '@/features/wake-lock/integrations/useWakeLockInObsidian'
 
 export class TeleprompterView extends ItemView {
   vueapp: VueApp
-
   unloadQueue: (() => void)[] = []
 
   constructor(leaf: WorkspaceLeaf) {
@@ -37,11 +37,13 @@ export class TeleprompterView extends ItemView {
     this.unloadQueue.push(
       useFullscreenInObsidian({ containerEl }).unload,
       useOpacityInObsidian({ app, containerEl, viewSelector }).unload,
+      useWakeLockInObsidian({ app, containerEl }).unload,
     )
   }
 
   onunload() {
     this.unloadQueue.forEach((u) => u())
+    this.unloadQueue = []
   }
 
   async onOpen() {

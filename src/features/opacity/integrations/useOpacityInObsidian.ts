@@ -1,6 +1,6 @@
-import type { App } from 'obsidian'
+import { type App, Platform } from 'obsidian'
 import { useOpacityFeature } from '@/features/opacity'
-import {watch, watchEffect} from 'vue'
+import { watch } from 'vue'
 
 type BrowserWindow = {
   isDestroyed: () => boolean
@@ -12,8 +12,11 @@ export function useOpacityInObsidian(options: {
   containerEl: HTMLElement
   viewSelector: string
 }): { unload: () => void } {
+  if (Platform.isMobileApp) return { unload: () => {} }
+
   const { app, containerEl, viewSelector } = options
   const opacityStore = useOpacityFeature().useStore()
+
   function restore() {
     getAllWindows().forEach((win: BrowserWindow) => setWinOpacity(win, 1))
   }
@@ -46,7 +49,9 @@ export function useOpacityInObsidian(options: {
   ]
 
   function getAllWindows() {
-    return (window as any).require('electron').remote.BrowserWindow.getAllWindows()
+    return (window as any)
+      .require('electron')
+      .remote.BrowserWindow.getAllWindows()
   }
 
   setTimeout(apply, 500)

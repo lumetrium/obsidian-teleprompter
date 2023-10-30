@@ -1,3 +1,4 @@
+import type { PluggablePanel } from '@/features/panel/types'
 import { usePanelFeature } from '@/features/panel'
 import { useControlFeature } from '@/features/control'
 import { PanelAlignment, PanelLocation } from '@/features/panel/constants'
@@ -16,7 +17,6 @@ import { useFontSizeFeature } from '@/features/font-size'
 import { usePaddingFeature } from '@/features/padding'
 import { useFlipXFeature } from '@/features/flip/flip-x'
 import { useFlipYFeature } from '@/features/flip/flip-y'
-import type { PluggablePanel } from '@/features/panel/types'
 import { useFullscreenFeature } from '@/features/fullscreen'
 import { useDetachWindowFeature } from '@/features/detach-window'
 import { useOpacityFeature } from '@/features/opacity'
@@ -64,8 +64,8 @@ export function initDefaultPanels() {
     controlPlugins[contentFeature.id],
     controlPlugins[opacityFeature.id],
     controlPlugins[detachWindowFeature.id],
-    controlPlugins[fullscreenFeature.id],
     controlPlugins[openSettingsFeature.id],
+    controlPlugins[fullscreenFeature.id],
   ]
 
   function createPanel(plugin: PluggablePanel, getState: () => object) {

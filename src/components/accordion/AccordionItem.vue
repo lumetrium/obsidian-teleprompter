@@ -118,6 +118,7 @@ const emit = defineEmits<{
 
 .accordion-item-subtitle {
   opacity: 0.8;
+  font-size: 0.9em;
 }
 
 .action-icon {
@@ -138,6 +139,7 @@ const emit = defineEmits<{
 
 .v-expansion-panel-title {
   box-shadow: none;
+  height: 56px;
 }
 
 .v-expansion-panel-title:hover > :deep(.v-expansion-panel-title__overlay) {

@@ -13,6 +13,7 @@
           vertical: isVertical,
           horizontal: isHorizontal,
           compact: isCompact,
+          disabled: !!disabled,
         }"
         @mouseenter="toggleTooltip(true)"
         @mouseleave="toggleTooltip(false)"
@@ -27,9 +28,9 @@
     <div>
       <div v-text="controlState.label" />
       <div
-        v-if="controlState.desc"
+        v-if="controlDesc"
         class="control-desc"
-        v-text="controlState.desc"
+        v-text="controlDesc"
       />
     </div>
   </v-tooltip>
@@ -38,7 +39,7 @@
 <script setup lang="ts">
 import { useProvideControlStore } from '@/features/control/store/control.store'
 import type { PluggableControl } from '@/features/control/types'
-import { computed, ref } from 'vue'
+import {computed, ref, toRefs} from 'vue'
 import { usePanelStore } from '@/features/panel/store/panel.store'
 import { PanelAlignment } from '@/features/panel/constants'
 
@@ -48,7 +49,13 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const { components, state: controlState } = useProvideControlStore(props.item)
+const { item } = toRefs(props)
+
+const {
+  components,
+  state: controlState,
+  disabled
+} = useProvideControlStore(item)
 
 const {
   getIsCompact,
@@ -82,6 +89,11 @@ const isOpenTooltip = ref(false)
 function toggleTooltip(state: boolean) {
   if (isCompact.value) isOpenTooltip.value = state
 }
+
+const controlDesc = computed(() => typeof disabled.value === 'string'
+  ? disabled.value
+  : controlState.value.desc
+)
 </script>
 
 <style scoped lang="scss">
@@ -96,6 +108,19 @@ function toggleTooltip(state: boolean) {
       width: 100%;
       height: 100%;
       padding: 0.8em;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 

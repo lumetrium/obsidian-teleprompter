@@ -12,7 +12,7 @@ export const useFlipYFeature = defineFeature('flip-y', (id) => {
     type: ControlType.TOGGLE,
     defaults: {
       label: 'Flip vertically',
-      desc: "Reverse the content's orientation along the Y-axis.",
+      desc: "Reverse the content's orientation along the Y-axis",
       value: false,
       resetValue: false,
       activeLabel: 'Flipped',

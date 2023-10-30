@@ -12,7 +12,7 @@ import { useSettingsFeature } from '@/features/settings'
 import type { PluggableMap, PluggableSetup } from '@/hooks/usePluggable/types'
 import { usePluggable } from '@/hooks/usePluggable/usePluggable'
 import { mdiTuneVariant } from '@mdi/js'
-import { computed } from 'vue'
+import {computed, toRaw} from 'vue'
 import cloneDeep from 'lodash/cloneDeep'
 import ControlSettings from '@/features/control/settings/ControlSettings.vue'
 import ControlIcon from '@/features/control/elements/ControlIcon.vue'
@@ -34,14 +34,13 @@ export const useControlFeature = defineFeature('control', (id) => {
   >(() =>
     Object.values(plugins.value).reduce((acc, plugin) => {
       acc[plugin.id] = {
-        ...plugin,
+        ...toRaw(plugin),
         defaults: cloneDeep(plugin.state),
         state: plugin.state,
       }
       return acc
     }, {} as any),
   )
-
 
   usePanelFeature().use({
     id,
@@ -75,6 +74,7 @@ export const useControlFeature = defineFeature('control', (id) => {
           .map((plugin) => ({
             id: plugin.id,
             name: plugin.defaults.label,
+            desc: plugin.defaults.desc,
             icon: plugin.icon,
             state: plugin.state,
             defaults: plugin.defaults,

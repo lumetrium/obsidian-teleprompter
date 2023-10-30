@@ -2,8 +2,8 @@ import { useControlFeature } from '@/features/control'
 import {
   computed,
   type ComputedRef,
+  type MaybeRef,
   type UnwrapNestedRefs,
-  watch,
   type WritableComputedRef,
 } from 'vue'
 import type { ControlState, PluggableControl } from '@/features/control/types'
@@ -22,12 +22,12 @@ type TypedSettingItemStore<State> = Modify<
 >
 
 const [useProvideControlStore, useDefaultControlStore] = createInjectionState(
-  (idOrControl: string | PluggableControl) => {
+  (idOrControl: string | MaybeRef<PluggableControl>) => {
     const store = useControlFeature().useStore()
     const control = computed(() =>
       typeof idOrControl === 'string'
         ? store.plugins[idOrControl]
-        : idOrControl,
+        : unref(idOrControl),
     )
 
     const state = computed({
@@ -46,6 +46,7 @@ const [useProvideControlStore, useDefaultControlStore] = createInjectionState(
       id: control.value.id,
       icon: computed(() => control.value?.icon),
       type: computed(() => control.value.type),
+      disabled: computed(() => control.value.disabled),
       defaults: computed(() => control.value.defaults),
       state,
       components: useControlComponents(control),

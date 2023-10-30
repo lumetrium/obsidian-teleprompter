@@ -1,6 +1,5 @@
 import type { Pluggable, PluggableMap } from '@/hooks/usePluggable/types'
 import type { DeepPartial } from '@/utils/utility-types'
-import cloneDeep from 'lodash/cloneDeep'
 import isEqual from 'lodash/isEqual'
 import merge from 'lodash/merge'
 import isEmpty from 'lodash/isEmpty'
@@ -67,7 +66,7 @@ export function usePluggableUtils() {
     return arr.map((plugin: Pluggable<S>, i) => {
       const defaultState = isPluggable(defaults?.[i])
         ? (defaults[i] as Pluggable<S>).defaults
-        : defaults?.[i] as S
+        : (defaults?.[i] as S)
       return {
         id: plugin.id,
         state: getDiffsDeep(plugin.state, defaultState ?? plugin.defaults),

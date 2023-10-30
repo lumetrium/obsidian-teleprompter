@@ -1,9 +1,11 @@
 import type { ControlType } from '@/features/control/enums'
 import type { Pluggable, PluggableOptions } from '@/hooks/usePluggable/types'
+import type { MaybeRef } from 'vue'
 
 export interface ControlOptions<T extends ControlTypeType = ControlTypeType>
   extends PluggableOptions<ControlStateType<T>> {
   type?: T
+  disabled?: MaybeRef<boolean | string>
 }
 
 export type ControlTypeType = (typeof ControlType)[keyof typeof ControlType]

@@ -1,5 +1,5 @@
 import { loadFeatures } from '@/features/loader'
-import { debounce, MarkdownView, Plugin } from 'obsidian'
+import {debounce, MarkdownView, Platform as ObsidianPlatform, Plugin} from 'obsidian'
 import { SettingTab } from './setting-tab'
 import { TeleprompterView } from './view'
 import { useContentFeature } from '@/features/content'
@@ -12,10 +12,12 @@ import { activateViewInObsidian } from '@/utils/activateViewInObsidian'
 import { useOpenAppInObsidian } from '@/features/open-app/integrations/useOpenAppInObsidian'
 import { useOpenSettingsInObsidian } from '@/features/open-settings/integrations/useOpenSettingsInObsidian'
 import { useCommandsObsidian } from '@/features/commands/integrations/useCommandsInObsidian'
+import {
+  setPlatformInObsidian
+} from '@/features/platform/integrations/setPlatformInObsidian'
 
 export default class TeleprompterPlugin extends Plugin {
   settings: Record<string, any> = {}
-
   unloadQueue: (() => void)[] = []
 
   async onload() {
@@ -48,6 +50,7 @@ export default class TeleprompterPlugin extends Plugin {
 
   async onunload() {
     this.unloadQueue.forEach((u) => u())
+    this.unloadQueue = []
   }
 
   async loadSettings() {
@@ -77,6 +80,8 @@ export default class TeleprompterPlugin extends Plugin {
       },
       restore: (id: string) => this.settings[id],
     })
+
+    setPlatformInObsidian()
 
     const app = this.app
     const viewType = VIEW_TYPE

@@ -22,6 +22,7 @@ const [useProvideSettingItemStore, useDefaultSettingItemStore] =
       icon: item.icon,
       components: item.components,
       name: computed(() => itemRef.value.name),
+      desc: computed(() => itemRef.value.desc),
       target: computed(() => unref(itemRef.value.target)),
       index: computed(() => settingStore.items.value.indexOf(item)),
       isEnabled: computed({

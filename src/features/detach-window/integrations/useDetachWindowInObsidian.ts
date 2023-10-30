@@ -1,4 +1,4 @@
-import { type App, debounce } from 'obsidian'
+import { type App, debounce, Platform } from 'obsidian'
 import { useDetachWindowFeature } from '@/features/detach-window'
 import { watch } from 'vue'
 import { activateViewInObsidian } from '@/utils/activateViewInObsidian'
@@ -9,6 +9,8 @@ export function useDetachWindowInObsidian(options: {
 }): {
   unload: () => void
 } {
+  if (Platform.isMobileApp) return { unload: () => {} }
+
   const { app, viewType } = options
   const detachWindowStore = useDetachWindowFeature().useStore()
 
