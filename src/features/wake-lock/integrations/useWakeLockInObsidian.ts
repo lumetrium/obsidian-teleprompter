@@ -23,7 +23,7 @@ export function useWakeLockInObsidian(options: {
     }
   }
 
-  setTimeout(apply, 500)
+  setTimeout(apply, 2000)
 
   return {
     unload() {

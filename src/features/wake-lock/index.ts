@@ -29,8 +29,8 @@ export const useWakeLockFeature = defineFeature('wake-lock', (id) => {
     id,
     type: ControlType.TOGGLE,
     defaults: {
-      label: 'No sleep',
-      desc: 'Prevent display sleep',
+      label: 'Keep awake',
+      desc: 'Prevent display from going to sleep',
       value: isEnabled.value,
       activeLabel: 'Active',
     },

@@ -45,7 +45,11 @@ allowing you to maintain a steady reading pace.
 - **Text color** - color of the text
 - **Background color** - color of the background
 - **View mode** - choose between 2 different content display modes: "Markdown" or "Plain text"
-- **Open settings** - button that opens the plugin's settings
+- **Keep awake** - prevent display from going to sleep
+- **Detach window** - move the teleprompter to a new window (desktop only)
+- **Opacity** - make the teleprompter window semi-transparent (desktop only)
+- **Open settings** - button that opens the plugin's settings 
+- **Full-screen** - button that opens the plugin's settings 
 
 ### Panels
 

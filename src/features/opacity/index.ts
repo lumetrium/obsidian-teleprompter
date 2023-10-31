@@ -1,9 +1,9 @@
 import { useControlFeature } from '@/features/control'
 import { ControlType } from '@/features/control/enums'
 import { defineFeature } from '@/features/feature'
-import {computed, ref} from 'vue'
+import { computed, ref } from 'vue'
 import OpacityIcon from '@/features/opacity/OpacityIcon.vue'
-import {usePlatformFeature} from '@/features/platform'
+import { usePlatformFeature } from '@/features/platform'
 
 export const useOpacityFeature = defineFeature('opacity', (id) => {
   const value = ref(100)
