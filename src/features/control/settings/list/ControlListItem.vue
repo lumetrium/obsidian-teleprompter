@@ -11,11 +11,10 @@
           v-text="item.state.label"
         />
         <div
-          class="control-list-item-desc"
+          class="control-list-item-desc d-none d-md-block"
           v-text="item.state.desc"
         />
       </div>
-      <div class="control-list-item-spacer" />
       <ControlListItemActions
         v-model:isOpenConfigure="isOpenConfigure"
         :item="item"
@@ -83,19 +82,27 @@ useProvideControlStore(props.item)
 
 .control-list-item-content {
   padding: 0 0 0 1em;
-  flex-shrink: 0;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
 
   .control-list-item-desc {
     opacity: 0.7;
     font-size: 0.9em;
     margin-top: 0.1em;
-  }
-}
 
-.control-list-item-spacer {
-  border-bottom: 1px dashed var(--divider-color);
-  width: 100%;
-  flex-shrink: 1;
-  margin: 0 1em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      border-bottom: 1px dashed var(--divider-color);
+      width: 100%;
+      flex-shrink: 5;
+      margin: 0 1em;
+    }
+  }
 }
 </style>

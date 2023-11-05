@@ -92,6 +92,7 @@ const vModel = computed({
 }
 
 .settings-field-content {
+  margin-left: 0.5em;
   :deep(.v-input) {
     width: 100%;
   }

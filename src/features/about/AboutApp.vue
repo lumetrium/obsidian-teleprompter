@@ -5,7 +5,7 @@
   >
     <v-avatar
       tile
-      size="120"
+      :size="avatarSize"
       class="mr-3 overflow-visible"
     >
       <TeleprompterLogo
@@ -17,7 +17,7 @@
       <v-card-title class="text-h4 pb-0">{{ APP_NAME }}</v-card-title>
       <v-card-subtitle>
         <a
-          style="overflow-wrap: anywhere"
+          style="overflow-wrap: anywhere; white-space: normal"
           class="link"
           target="_blank"
           :href="'https://' + APP_WEBSITE"
@@ -25,17 +25,19 @@
         />
       </v-card-subtitle>
       <v-card-text>
-        An Obsidian plugin designed to seamlessly integrate
-        teleprompter functionality into your note-taking workflow.
+        An Obsidian plugin designed to seamlessly integrate teleprompter
+        functionality into your note-taking workflow.
       </v-card-text>
     </div>
   </v-card>
 </template>
 
 <script setup lang="ts">
-import {AUTHOR_NAME, AUTHOR_WEBSITE, APP_NAME, APP_WEBSITE} from '@/constants'
-import LumetriumLogo from '@/components/icons/LumetriumLogo.vue'
+import { APP_NAME, APP_WEBSITE } from '@/constants'
 import TeleprompterLogo from '@/components/icons/TeleprompterLogo.vue'
-</script>
+import { useDisplay } from 'vuetify'
+import { computed } from 'vue'
 
-<style scoped lang="scss"></style>
+const { smAndDown } = useDisplay()
+const avatarSize = computed(() => (smAndDown.value ? 60 : 115))
+</script>

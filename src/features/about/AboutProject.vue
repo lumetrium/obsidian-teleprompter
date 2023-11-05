@@ -5,7 +5,7 @@
   >
     <v-avatar
       tile
-      size="120"
+      :size="avatarSize"
       class="mr-3 overflow-visible"
     >
       <LumetriumLogo
@@ -25,8 +25,8 @@
         />
       </v-card-subtitle>
       <v-card-text>
-        Project dedicated to enhancing personal productivity by offering a
-        suite of tools designed to empower individuals in their pursuit of peak
+        Project dedicated to enhancing personal productivity by offering a suite
+        of tools designed to empower individuals in their pursuit of peak
         efficiency.
       </v-card-text>
     </div>
@@ -36,6 +36,9 @@
 <script setup lang="ts">
 import { AUTHOR_NAME, AUTHOR_WEBSITE } from '@/constants'
 import LumetriumLogo from '@/components/icons/LumetriumLogo.vue'
-</script>
+import { useDisplay } from 'vuetify'
+import { computed } from 'vue'
 
-<style scoped lang="scss"></style>
+const { smAndDown } = useDisplay()
+const avatarSize = computed(() => (smAndDown.value ? 60 : 115))
+</script>
