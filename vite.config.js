@@ -2,9 +2,21 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify from 'vite-plugin-vuetify'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
-  plugins: [vue(), vuetify({ styles: 'none', autoImport: true })],
+  plugins: [
+    vue(),
+    vuetify({ styles: 'none', autoImport: true }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'manifest.json',
+          dest: './',
+        },
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

@@ -1,6 +1,6 @@
 {
   "name": "obsidian-teleprompter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Teleprompter plugin for Obsidian",
   "main": "main.js",
   "scripts": {
@@ -40,6 +40,7 @@
     "sass": "^1.63.6",
     "typescript": "^5.1.6",
     "vite": "^4.4.4",
+    "vite-plugin-static-copy": "^0.17.0",
     "vite-plugin-vuetify": "^1.0.2"
   }
 }
