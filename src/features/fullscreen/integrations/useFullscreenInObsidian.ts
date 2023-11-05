@@ -21,6 +21,12 @@ export function useFullscreenInObsidian(options: {
   el.addEventListener('fullscreenchange', update)
   openSettingsFeature.addEventListener('click', turnOff)
 
+  const interval = setInterval(() => {
+    // this is needed for mobile, when the user swipes to hide the plugin's view
+    // it is required to exit the fullscreen mode, otherwise everything freezes
+    if (fullscreenStore.value && !el.checkVisibility()) turnOff()
+  }, 2000)
+
   function update() {
     fullscreenStore.value = isFullscreen()
   }
@@ -40,6 +46,8 @@ export function useFullscreenInObsidian(options: {
       unwatch()
       el.removeEventListener('fullscreenchange', update)
       openSettingsFeature.removeEventListener('click', turnOff)
+      clearInterval(interval)
+      turnOff()
     },
   }
 }
