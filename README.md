@@ -49,7 +49,7 @@ allowing you to maintain a steady reading pace.
 - **Detach window** - move the teleprompter to a new window (desktop only)
 - **Opacity** - make the teleprompter window semi-transparent (desktop only)
 - **Open settings** - button that opens the plugin's settings 
-- **Full-screen** - button that opens the plugin's settings 
+- **Full-screen** - maximize the teleprompter's view 
 
 ### Panels
 
