@@ -43,3 +43,9 @@ To get started with contributing, follow these steps:
 ```bash
 yarn build
 ```
+
+## Testing
+
+```bash
+yarn test:vitest
+```
