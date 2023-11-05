@@ -1,5 +1,5 @@
 import { loadFeatures } from '@/features/loader'
-import {debounce, MarkdownView, Platform as ObsidianPlatform, Plugin} from 'obsidian'
+import { debounce, MarkdownView, Plugin } from 'obsidian'
 import { SettingTab } from './setting-tab'
 import { TeleprompterView } from './view'
 import { useContentFeature } from '@/features/content'
@@ -12,9 +12,7 @@ import { activateViewInObsidian } from '@/utils/activateViewInObsidian'
 import { useOpenAppInObsidian } from '@/features/open-app/integrations/useOpenAppInObsidian'
 import { useOpenSettingsInObsidian } from '@/features/open-settings/integrations/useOpenSettingsInObsidian'
 import { useCommandsObsidian } from '@/features/commands/integrations/useCommandsInObsidian'
-import {
-  setPlatformInObsidian
-} from '@/features/platform/integrations/setPlatformInObsidian'
+import { setPlatformInObsidian } from '@/features/platform/integrations/setPlatformInObsidian'
 
 export default class TeleprompterPlugin extends Plugin {
   settings: Record<string, any> = {}
@@ -26,7 +24,9 @@ export default class TeleprompterPlugin extends Plugin {
     this.updateContent()
     const updateContentDebounced = debounce(this.updateContent.bind(this), 300)
 
-    this.registerEvent(this.app.vault.on('modify', updateContentDebounced))
+    this.registerEvent(
+      this.app.metadataCache.on('changed', updateContentDebounced),
+    )
     this.registerEvent(
       this.app.workspace.on('active-leaf-change', () => {
         if (usePinNoteFeature().useStore().value) return
