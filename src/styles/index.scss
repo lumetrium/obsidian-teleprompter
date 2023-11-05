@@ -11,6 +11,10 @@ body {
   --v-border-color: var(--mono-rgb-100);
   --v-focus-opacity: 0.1;
   --v-pressed-opacity: 0.2;
+
+  > .view-header {
+    display: none;
+  }
 }
 
 @import 'vuetify/styles';
