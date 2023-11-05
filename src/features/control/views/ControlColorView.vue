@@ -3,8 +3,8 @@
     ref="picker"
     v-model:mode="state.mode"
     :model-value="value"
-    width="100%"
     elevation="0"
+    :width="width"
     :swatches="[presets]"
     @update:model-value="updateValue"
   />
@@ -13,26 +13,32 @@
 <script setup lang="ts">
 import type { ControlColorState } from '@/features/control/types'
 import { useControlStore } from '@/features/control/store/control.store'
-import { ref, toRefs } from 'vue'
+import { onBeforeUnmount, onMounted, ref, toRefs } from 'vue'
+import { useParentElement } from '@vueuse/core/index'
 
 const { state } = useControlStore<ControlColorState>()
 const { value, presets } = toRefs(state.value)
 
 const picker = ref()
 
-// NOTICE:
-// width="100%" doesn't work when tab the app is open in a separate window
-// this is likely due to a bug with ResizeObserver in Obsidian environment
-// using activeDocument to obtain the element does not help
-
 function updateValue(color: unknown) {
   const hexa = color.toString()
-  if (!value.value && hexa === '#FFFFFF') {
-    // with width="100%" it emits #FFFFFF first time after opening for no reason
-    // vuetify 3.3.5
-  } else {
-    value.value = hexa
-  }
+  value.value = hexa
+}
+
+// below is a workaround for adjusting the width of the color picker
+// width="100%" doesn't work when the app is open in a separate window
+// this is likely due to a bug with ResizeObserver in Obsidian
+
+const width = ref(0)
+const parentEl = useParentElement()
+const interval = ref(null)
+
+onMounted(() => (interval.value = setInterval(updateWidth, 100)))
+onBeforeUnmount(() => interval.value && clearInterval(interval.value))
+function updateWidth() {
+  const parentWidth = parentEl.value?.clientWidth ?? 0
+  if (width.value !== parentWidth) width.value = parentWidth
 }
 </script>
 
