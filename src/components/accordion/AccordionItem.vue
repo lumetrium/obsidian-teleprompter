@@ -7,7 +7,7 @@
           color="accent"
           :model-value="state"
           hide-details
-          class="mr-5"
+          class="mr-4"
           @update:model-value="emit('update:state', $event)"
           @click="$event.stopPropagation()" 
         />
@@ -31,7 +31,7 @@
             />
           </slot>
         </div>
-        <div>
+        <div class="accordion-item-header-text">
           <slot name="header">
             <div
               class="accordion-item-title"
@@ -86,6 +86,9 @@ const emit = defineEmits<{
   display: flex;
   line-height: 1.5em;
   align-items: center;
+  flex-shrink: 1;
+  overflow: hidden;
+  margin-right: 0.3em;
 }
 
 .v-expansion-panel-header {
@@ -135,6 +138,8 @@ const emit = defineEmits<{
 
 .v-expansion-panel :deep(.v-expansion-panel-title__icon) {
   align-items: center;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .v-expansion-panel-title {
@@ -144,5 +149,11 @@ const emit = defineEmits<{
 
 .v-expansion-panel-title:hover > :deep(.v-expansion-panel-title__overlay) {
   opacity: 0.01;
+}
+
+.accordion-item-header-text, .accordion-item-header-text > * {
+  flex-shrink: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 </style>

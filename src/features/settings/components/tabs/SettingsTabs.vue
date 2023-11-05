@@ -35,6 +35,14 @@ const currentTabId = ref(tabs.value[0]?.id)
 </script>
 
 <style scoped lang="scss">
+.v-tabs {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+}
 .v-tab {
   padding: 0 2em;
   border-bottom-right-radius: 0;

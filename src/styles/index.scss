@@ -200,6 +200,7 @@ button,
   outline: none;
   transition: 0.15s opacity cubic-bezier(0.4, 0, 0.2, 1);
   transition-property: opacity, border-color, box-shadow;
+  overflow: hidden;
 
   &.v-field--focused {
     box-shadow: 0 0 0 2px var(--background-modifier-border-focus);
