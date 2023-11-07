@@ -15,7 +15,7 @@ An Obsidian plugin designed to seamlessly integrate<br/>
 teleprompter functionality into your note-taking workflow.
 </p>
 
-## 📃 About the plugin
+## About the plugin
 
 Open Teleprompter window and focus the note you want to read in Obsidian. Teleprompter window will display the contents of the note in a large, easy-to-read format. It will automatically scroll as you read, allowing you to maintain a steady reading pace.
 
@@ -25,10 +25,10 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
 
 # 📖 Table of contents
 
-- [📃 About the plugin](#-about-the-plugin)
-- [📸 Screenshots](#-screenshots)
-- [🌟 Features](#-features)
-  - [🕹️ Controls](#-controls)
+- [📃 About the plugin](#about-the-plugin)
+- [📸 Screenshots](#screenshots)
+- [🌟 Features](#features)
+  - [🕹️ Controls](#controls)
     - [Play](#play)
     - [Pin note](#pin-note)
     - [Speed](#speed)
@@ -47,21 +47,22 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
     - [Opacity](#opacity)
     - [Open settings](#open-settings)
     - [Full-screen](#full-screen)
-  - [🔳 Panels](#-panels)
+  - [🔳 Panels](#panels)
     - [Control panel](#control-panel)
     - [Page minimap](#page-minimap)
-  - [⌨️ Hotkeys](#-hotkeys)
+  - [⌨️ Hotkeys](#hotkeys)
     - [Controls hotkeys](#controls-hotkeys)
     - [Content hotkeys](#content-hotkeys)
     - [Additional hotkeys](#additional-hotkeys)
-- [📦 Installation](#-installation)
+- [📦 Installation](#installation)
+  - [Community plugins catalog](#community-plugins-catalog)
   - [Manual Installation](#manual-installation)
-- [📢 Disclosures](#-disclosures)
-- [💡 Recommendations](#-recommendations)
+- [📢 Disclosures](#disclosures)
+- [💡 Recommendations](#recommendations)
 
 Please note that some of the sections under "Features" contain collapsable content with further details and demos. You can expand them by clicking on their descriptions.
 
-# 📸 Screenshots
+# Screenshots
 
 <p>
 Teleprompter in a separate tab of the sidebar
@@ -94,11 +95,11 @@ Hotkeys
 
 See even more screenshots by expanding the sections below. Click on the feature description that you're interested in to view its details and a visual demo.
 
-# 🌟 Features
+# Features
 
-> Have a feature idea that you believe will take this project to the next level? Don't keep it to yourself; share it with the community by creating a new issue [here](https://github.com/lumetrium/obsidian-teleprompter/issues/new). This will be the place to discuss and document your feature proposal.
+Have a feature idea that you believe will take this project to the next level? Don't keep it to yourself; share it with the community by creating a new issue [here](https://github.com/lumetrium/obsidian-teleprompter/issues/new). This will be the place to discuss and document your feature proposal.
 
-## 🕹️ Controls
+## Controls
 
 Controls are interactive elements that you can place on the Control panel. They provide a wide range of customization options, enabling you to tailor their functionality to your specific preferences. Each control offers a set of commands that can be conveniently assigned to hotkeys.
 
@@ -690,7 +691,7 @@ Demo:
 
 </details>
 
-## 🔳 Panels
+## Panels
 
 Panels are versatile containers, available in both vertical and horizontal orientations, that you can insert into the Teleprompter window to showcase a variety of controls and additional information. You can add as many panels as you need and tailor their content, dimensions, positioning, and other attributes to match your specific requirements.
 
@@ -756,7 +757,7 @@ Demo:
 
 </details>
 
-## ⌨️ Hotkeys
+## Hotkeys
 
 Use hotkeys for all possible actions within the Teleprompter window. 
 In total, the plugin provides **60 commands** that can be mapped to hotkeys.
@@ -778,7 +779,7 @@ Controls provide commands that are specific to their functionality. See the deta
 - Open teleprompter in a new tab (ID: open-app:new-tab)
 - Open teleprompter in a new window (ID : open-app:new-window)
 
-## 📦 Installation
+## Installation
 
 ### Community plugins catalog
 
@@ -796,19 +797,19 @@ For details see [detailed installation instructions](https://help.obsidian.md/Ex
 
 For details see [the forum](https://forum.obsidian.md/t/plugins-mini-faq/7737).
 
-## 📢 Disclosures
+## Disclosures
 
 In accordance with [Obsidian's developer policies](https://docs.obsidian.md/Developer+policies), it is required to transparently disclose the presence of any static ads, such as banners and pop-up messages, within the plugin's interface.
 
 This plugin includes a single [static ad](./assets/screenshots/settings-about.png), which is accessible exclusively on the "About" page within the settings. The ad is a link to a [project](https://lumetrium.com/definer) developed by the same author responsible for this plugin. It's important to emphasize that there is no involvement of any third-party advertising.
 
-## 💡️ Recommendations
+## Recommendations
 
 Check out this browser extension made by the same author:
 
 <a href="https://lumetrium.com/definer">
-  <img src="./assets/logos/definer.png" style="margin-right: 1em" height="40px" align="left"/>
+  <img src="./assets/logos/definer.png" style="margin-right: 1em" height="30px" align="left"/>
 </a>
 
 **[Definer - Popup Dictionary & Translator](https://lumetrium.com/definer)**  
-Instant definitions, translations, search results for words and phrases you select or type.
+Instant definitions, translations, and search results for words and phrases you select or type.
