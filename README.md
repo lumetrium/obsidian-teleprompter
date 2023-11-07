@@ -65,14 +65,20 @@ Please note that some of the sections under "Features" contain collapsable conte
 # Screenshots
 
 <p>
-Teleprompter in a separate tab of the sidebar
-  <img src="./assets/screenshots/tab.png"/>
 
-Teleprompter in a separate window
-  <img src="./assets/screenshots/window.png"/>
+Teleprompter in a separate tab of the sidebar:
 
-Settings: Panels tab
-  <img src="./assets/screenshots/settings-panels.png"/>
+<img src="./assets/screenshots/tab.png" />
+
+
+Teleprompter in a separate window:
+
+<img src="./assets/screenshots/window.png"/>
+
+
+Settings: Panels tab:
+
+<img src="./assets/screenshots/settings-panels.png"/>
 
 </p>
 
@@ -80,15 +86,19 @@ Settings: Panels tab
   <summary><b>MORE SCREENSHOTS</b></summary>
 
 Settings: Controls tab
+
 <img src="./assets/screenshots/settings-controls.png"/>
 
 Settings: expanded Font size control in the Controls tab
+
 <img src="./assets/screenshots/settings-controls-expanded.png"/>
 
 Settings: expanded Control panel in the Panels tab in white theme (if you're into that)
+
 <img src="./assets/screenshots/settings-panels-expanded-white.png"/>
 
 Hotkeys
+
 <img src="./assets/screenshots/hotkeys.png"/>
 
 </details>
@@ -783,9 +793,8 @@ Controls provide commands that are specific to their functionality. See the deta
 
 ### Community plugins catalog
 
-[Click HERE to open the installation page in Obsidian](https://obsidian.md/plugins?id=teleprompter).
-
-For details see [detailed installation instructions](https://help.obsidian.md/Extending+Obsidian/Community+plugins).
+Click [HERE](https://obsidian.md/plugins?id=teleprompter) to open the installation page in Obsidian.  
+For details see the [official installation instructions](https://help.obsidian.md/Extending+Obsidian/Community+plugins).
 
 ### Manual installation
 
@@ -808,7 +817,7 @@ This plugin includes a single [static ad](./assets/screenshots/settings-about.pn
 Check out this browser extension made by the same author:
 
 <a href="https://lumetrium.com/definer">
-  <img src="./assets/logos/definer.png" style="margin-right: 1em" height="30px" align="left"/>
+  <img src="./assets/logos/definer.png" style="margin-right: 0.7em" height="30px" align="left"/>
 </a>
 
 **[Definer - Popup Dictionary & Translator](https://lumetrium.com/definer)**  
