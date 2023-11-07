@@ -17,7 +17,7 @@ An Obsidian plugin designed to seamlessly integrate<br/>
 teleprompter functionality into your note-taking workflow.
 </p>
 
-## About the plugin
+## 📃 About the plugin
 
 Open Teleprompter window and focus the note you want to read in Obsidian.
 Teleprompter window will display the contents of the note in a large,
@@ -25,58 +25,60 @@ easy-to-read format. It will automatically scroll as you read,
 allowing you to maintain a steady reading pace.
 
 <p align="center">
-  <img src="./assets/screenshots/main.png"/>
+  <img src="./assets/screenshots/devices.png"/>
 </p>
 
-## Features
+# 📖 Table of contents
 
-### Controls
+- [📃 About the plugin](#-about-the-plugin)
+- [📸 Screenshots](#-screenshots)
+- [🌟 Features](#-features)
+  - [🕹️ Controls](#-controls)
+    - [Play](#play)
+    - [Pin note](#pin-note)
+    - [Speed](#speed)
+    - [Font size](#font-size)
+    - [Line height](#line-height)
+    - [Letter spacing](#letter-spacing)
+    - [Font family](#font-family)
+    - [Padding](#padding)
+    - [Flip horizontally](#flip-horizontally)
+    - [Flip vertically](#flip-vertically)
+    - [Text color](#text-color)
+    - [Background color](#background-color)
+    - [View mode](#view-mode)
+    - [Keep awake](#keep-awake)
+    - [Detach window](#detach-window)
+    - [Opacity](#opacity)
+    - [Open settings](#open-settings)
+    - [Full-screen](#full-screen)
+  - [🔳 Panels](#-panels)
+    - [Control panel](#control-panel)
+    - [Page minimap](#page-minimap)
+  - [⌨️ Hotkeys](#-hotkeys)
+    - [Controls hotkeys](#controls-hotkeys)
+    - [Content hotkeys](#content-hotkeys)
+    - [Additional hotkeys](#additional-hotkeys)
+- [📦 Installation](#-installation)
+  - [Manual Installation](#manual-installation)
+- [📢 Disclosures](#-disclosures)
+- [💡 Recommendations](#-recommendations)
 
-- **Play** - toggle auto-scroll
-- **Pin note** - preserve content when switching focus to other notes
-- **Speed** - scroll speed
-- **Font size** - size of the text
-- **Line height** - space between lines
-- **Letter spacing** - space between letters
-- **Font family** - font used for the text
-- **Padding** - space between the text and the edges of the window
-- **Flip horizontally** - flip the text horizontally
-- **Flip vertically** - flip the text vertically
-- **Text color** - color of the text
-- **Background color** - color of the background
-- **View mode** - choose between 2 different content display modes: "Markdown" or "Plain text"
-- **Keep awake** - prevent display from going to sleep
-- **Detach window** - move the teleprompter to a new window (desktop only)
-- **Opacity** - make the teleprompter window semi-transparent (desktop only)
-- **Open settings** - button that opens the plugin's settings 
-- **Full-screen** - maximize the teleprompter's view 
+Please note that some of the sections under "Features" contain collapsable
+content with further details and demos. You can expand them by clicking on
+their descriptions.
 
-### Panels
-
-You can add as many panels as you want and customize their content, size,
-position, and more. The available panels are:
-
-- **Control panel**: Contains a list of controls that you can add, remove, configure, and reorder.
-- **Page minimap**: Displays a minimap of the content for
-  easy navigation and better context awareness.
-
-### Hotkeys
-
-Use hotkeys for all possible actions within the Teleprompter window.
-Every control provides multiple different hotkeys, so you can set up the one that
-best suits your case.
-
-## Screenshots
+# 📸 Screenshots
 
 <p>
-Teleprompter in a separate tab
+Teleprompter in a separate tab of the sidebar
   <img src="./assets/screenshots/tab.png"/>
 
 Teleprompter in a separate window
-<img src="./assets/screenshots/window.png"/>
+  <img src="./assets/screenshots/window.png"/>
 
 Settings: Panels tab
-<img src="./assets/screenshots/settings-panels.png"/>
+  <img src="./assets/screenshots/settings-panels.png"/>
 
 </p>
 
@@ -97,9 +99,711 @@ Hotkeys
 
 </details>
 
-## Installation
+See even more screenshots by expanding the sections below. 
+Click on the feature description that you're interested in 
+to view its details and a visual demo.
 
-Only manual installation is supported at the moment.
+# 🌟 Features
+
+> Have a feature idea that you believe 
+will take this project to the next level? 
+Don't keep it to yourself; share it with the community by creating a new issue 
+[here](https://github.com/lumetrium/obsidian-teleprompter/issues/new).
+This will be the place to discuss and document your feature proposal.
+
+## 🕹️ Controls
+
+Controls are interactive elements that you can place on the Control panel.
+They provide a wide range of customization options, 
+enabling you to tailor their functionality to your specific preferences. 
+Each control offers a set of commands that can be conveniently assigned to hotkeys.
+
+### Play
+
+<details>
+  <summary>Toggle auto-scroll</summary>
+
+- When <b style="color: green">enabled</b>, the teleprompter will automatically scroll with set speed.
+- When <b style="color: red">disabled</b>, the teleprompter will stop scrolling and wait for you to scroll manually.
+
+---
+
+Commands:
+- Toggle (ID: control:play:toggle)
+- Toggle on (ID: control:play:true)
+- Toggle off (ID: control:play:false)
+
+---
+
+Settings:
+- Label: displayed name (default: "Play")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: red">disabled</b>)
+- Active label: displayed label when enabled (default: "Playing")
+- Inactive label: displayed label when disabled (default: "Paused")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/play.gif" />
+
+</details>
+
+### Pin note
+
+<details>
+  <summary>Preserve content when switching focus to other notes</summary>
+
+- When <b style="color: green">enabled</b>, the teleprompter's content will remain the same when you switch focus to other notes.
+- When <b style="color: red">disabled</b>, the teleprompter's content will change to the content of the note you're currently focused on.
+
+---
+
+Commands:
+- Toggle (ID: control:pin-note:toggle)
+- Toggle on (ID: control:pin-note:true)
+- Toggle off (ID: control:pin-note:false)
+
+---
+Settings:
+- Label: displayed name (default: "Pin note")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: red">disabled</b>)
+- Active label: displayed label when enabled (default: "Pinned")
+- Inactive label: displayed label when disabled (default: "Unpinned")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/pin-note.gif" />
+
+</details>
+
+### Speed
+
+<details>
+  <summary>Set the speed at which the teleprompter will scroll</summary>
+
+---
+
+Commands:
+- Increase with step X (ID: control:speed:up)
+- Decrease with step X (ID: control:speed:down)
+- Reset (ID: control:speed:reset)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Label: displayed name (default: "Speed")
+- Value: current speed (default: 18)
+- Reset value: speed that will be applied when you reset it (default: 18)
+- Minimum: lowest possible speed (default: 0)
+- Maximum: highest possible speed (default: 50)
+- Step: how much the value will increase or decrease at a time (default: 1)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/speed.gif" />
+
+</details>
+
+### Font size
+
+<details>
+  <summary>Set the size of the text</summary>
+
+---
+
+Commands:
+- Increase with step X (ID: control:font-size:up)
+- Decrease with step X (ID: control:font-size:down)
+- Reset (ID: control:font-size:reset)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Label: displayed name (default: "Font size")
+- Value: current font size (default: 60)
+- Reset value: font size that will be applied when you reset it (default: 60)
+- Minimum: lowest possible font size (default: 1)
+- Maximum: highest possible font size (default: 200)
+- Step: how much the value will increase or decrease at a time (default: 1)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/font-size.gif" />
+
+</details>
+
+### Line height
+
+<details>
+  <summary>Set the space between the lines</summary>
+
+---
+
+Commands:
+- Increase with step X (ID: control:line-height:up)
+- Decrease with step X (ID: control:line-height:down)
+- Reset (ID: control:line-height:reset)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Label: displayed name (default: "Line height")
+- Value: current line height (default: 1.2)
+- Reset value: line height that will be applied when you reset it (default: 1.2)
+- Minimum: lowest possible line height (default: 0.7)
+- Maximum: highest possible line height (default: 5)
+- Step: how much the value will increase or decrease at a time (default: 0.1)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/line-height.gif" />
+
+</details>
+
+### Letter spacing
+
+<details>
+  <summary>Set the space between the letters</summary>
+
+---
+
+Commands:
+- Increase with step X (ID: control:letter-spacing:up)
+- Decrease with step X (ID: control:letter-spacing:down)
+- Reset (ID: control:letter-spacing:reset)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Label: displayed name (default: "Letter spacing")
+- Value: current letter spacing (default: 0, which means normal)
+- Reset value: letter spacing that will be applied when you reset it (default: 0)
+- Minimum: minimum letter spacing (default: -5)
+- Maximum: highest possible letter spacing (default: 10)
+- Step: how much the value will increase or decrease at a time (default: 0.05)
+
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/letter-spacing.gif" />
+
+</details>
+
+### Font family
+
+<details>
+  <summary>Set the font used for the text</summary>
+
+---
+
+Commands:
+- Reset (ID: control:font-family:reset)
+
+---
+
+Settings:
+- Label: displayed name (default: "Font family")
+- Value: current font family (default: "Default")
+- Reset value: font family that will be applied when you reset it (default: "Default")
+
+---
+
+Options:
+- Default
+- Arial
+- Courier New _(monospaced)_
+- Georgia
+- Helvetica
+- Times New Roman
+- Trebuchet MS
+- Tahoma
+- Roboto
+- Verdana
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/font-family.gif" />
+
+</details>
+
+### Padding
+
+<details>
+  <summary>Set the space between the text and the edges of the window</summary>
+
+---
+
+Commands:
+- Top - increase with step X (ID: control:padding:0:up)
+- Top - decrease with step X (ID: control:padding:0:down)
+- Top - reset (ID: control:padding:0:reset)
+
+
+- Right - increase with step X (ID: control:padding:1:up)
+- Right - decrease with step X (ID: control:padding:1:down)
+- Right - reset (ID: control:padding:1:reset)
+
+
+- Bottom - increase with step X (ID: control:padding:2:up)
+- Bottom - decrease with step X (ID: control:padding:2:down)
+- Bottom - reset (ID: control:padding:2:reset)
+
+
+- Left - increase with step X (ID: control:padding:3:up)
+- Left - decrease with step X (ID: control:padding:3:down)
+- Left - reset (ID: control:padding:3:reset)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Top
+  - Label: displayed name (default: "Top")
+  - Value: current top padding (default: 50%)
+  - Reset value: top padding that will be applied when you reset it (default: 50%)
+  - Minimum: lowest possible top padding (default: 0%)
+  - Maximum: highest possible top padding (default: 100%)
+  - Step: how much the value will increase or decrease at a time (default: 1%)
+- Right
+  - Label: displayed name (default: "Right")
+  - Value: current right padding (default: 5%)
+  - Reset value: right padding that will be applied when you reset it (default: 5%)
+  - Minimum: lowest possible right padding (default: 0%)
+  - Maximum: highest possible right padding (default: 100%)
+  - Step: how much the value will increase or decrease at a time (default: 1%)
+- Bottom
+  - Label: displayed name (default: "Bottom")
+  - Value: current bottom padding (default: 50%)
+  - Reset value: bottom padding that will be applied when you reset it (default: 50%)
+  - Minimum: lowest possible bottom padding (default: 0%)
+  - Maximum: highest possible bottom padding (default: 100%)
+  - Step: how much the value will increase or decrease at a time (default: 1%)
+- Left
+  - Label: displayed name (default: "Left")
+  - Value: current left padding (default: 5%)
+  - Reset value: left padding that will be applied when you reset it (default: 5%)
+  - Minimum: lowest possible left padding (default: 0%)
+  - Maximum: highest possible left padding (default: 100%)
+  - Step: how much the value will increase or decrease at a time (default: 1%)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/padding.gif"/>
+
+</details>
+
+### Flip horizontally
+
+<details>
+  <summary>Flip the text horizontally</summary>
+
+- When <b style="color: green">enabled</b>, the text will be flipped along the X-axis.
+- When <b style="color: red">disabled</b>, the text will be displayed normally.
+
+---
+
+Commands:
+- Toggle (ID: control:flip-x:toggle)
+- Toggle on (ID: control:flip-x:true)
+- Toggle off (ID: control:flip-x:false)
+
+---
+
+Settings:
+- Label: displayed name (default: "Flip horizontally")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: red">disabled</b>)
+- Active label: displayed label when enabled (default: "Flipped")
+- Inactive label: displayed label when disabled (default: "")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/flip-x.gif"/>
+
+</details>
+
+### Flip vertically
+
+<details>
+  <summary>Flip the text vertically</summary>
+
+- When <b style="color: green">enabled</b>, the text will be flipped along the Y-axis.
+- When <b style="color: red">disabled</b>, the text will be displayed normally.
+
+---
+
+Commands:
+- Toggle (ID: control:flip-y:toggle)
+- Toggle on (ID: control:flip-y:true)
+- Toggle off (ID: control:flip-y:false)
+
+---
+
+Settings:
+- Label: displayed name (default: "Flip vertically")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: red">disabled</b>)
+- Active label: displayed label when enabled (default: "Flipped")
+- Inactive label: displayed label when disabled (default: "")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/flip-y.gif"/>
+
+</details>
+
+### Text color
+
+<details>
+  <summary>Set the color of the text</summary>
+
+---
+
+Commands:
+- Reset (ID: control:text-color:reset)
+
+---
+
+Settings:
+- Label: displayed name (default: "Text color")
+- Value: current text color (default: Obsidian's text color)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/text-color.gif"/>
+
+</details>
+
+### Background color
+
+<details>
+  <summary>Set the color of the background</summary>
+
+---
+
+Commands:
+- Reset (ID: control:bg-color:reset)
+
+---
+
+Settings:
+- Label: displayed name (default: "Background color")
+- Value: current background color (default: Obsidian's background color)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/bg-color.gif"/>
+
+</details>
+
+### View mode
+
+<details>
+  <summary>Choose between 2 different content display modes: "Markdown" or "Plain text"</summary>
+
+---
+
+Commands:
+- Reset (ID: control:content:reset)
+
+---
+
+Settings:
+- Label: displayed name (default: "View mode")
+- Value: current view mode (default: "Markdown")
+- Reset value: view mode that will be applied when you reset it (default: "Markdown")
+
+---
+
+Options:
+- Markdown
+- Plain text
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/view-mode.gif"/>
+
+</details>
+
+### Keep awake
+
+<details>
+  <summary>Prevent display from going to sleep</summary>
+
+- When <b style="color: green">enabled</b>, the display will not turn off while the teleprompter is open.
+- When <b style="color: red">disabled</b>, the display will turn off according to your system's settings.
+
+---
+
+Commands:
+- Toggle (ID: control:wake-lock:toggle)
+- Toggle on (ID: control:wake-lock:true)
+- Toggle off (ID: control:wake-lock:false)
+
+---
+
+Settings:
+- Label: displayed name (default: "Keep awake")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: green">enabled</b>)
+- Active label: displayed label when enabled (default: "Active")
+- Inactive label: displayed label when disabled (default: "")
+
+</details>
+
+### Detach window
+
+> 📵 This feature is not available on mobile.
+
+<details>
+  <summary>Move the teleprompter to a new window</summary>
+
+- Upon <b style="color: green">enabling</b>, the teleprompter will be moved to a new window.
+- Upon <b style="color: red">disabling</b>, the teleprompter will be moved to the main Obsidian window.
+
+---
+
+Commands:
+
+- Toggle (ID: control:detach-window:toggle)
+- Toggle on (ID: control:detach-window:true)
+- Toggle off (ID: control:detach-window:false)
+
+---
+
+Settings:
+- Label: displayed name (default: "Detach window")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: red">disabled</b>)
+- Active label: displayed label when enabled (default: "Detached")
+- Inactive label: displayed label when disabled (default: "")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/detach-window.gif"/>
+
+</details>
+
+### Opacity
+
+> 📵 This feature is not available on mobile.
+
+<details>
+  <summary>Make the teleprompter window semi-transparent (desktop only)</summary>
+
+---
+
+Commands:
+
+- Increase with step X (ID: control:opacity:up)
+- Decrease with step X (ID: control:opacity:down)
+- Reset (ID: control:opacity:reset)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Label: displayed name (default: "Opacity")
+- Value: current opacity (default: 100%)
+- Reset value: opacity that will be applied when you reset it (default: 100%)
+- Minimum: lowest possible opacity (default: 40%)
+- Maximum: highest possible opacity (default: 100%)
+- Step: how much the value will increase or decrease at a time (default: 1%)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/opacity.gif"/>
+
+</details>
+
+### Open settings
+
+<details>
+  <summary>Use a button to quickly open plugin's settings</summary>
+
+---
+
+Commands:
+- Open settings (ID: control:open-settings:trigger)
+
+---
+
+Settings:
+- Label: displayed name (default: "Open settings")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/open-settings.gif"/>
+
+</details>
+
+### Full-screen
+
+<details>
+  <summary>Maximize the teleprompter's view</summary>
+
+- Upon <b style="color: green">enabling</b>, the teleprompter will be maximized to fill the entire screen.
+- Upon <b style="color: red">disabling</b>, the teleprompter will be restored to its original size.
+
+---
+
+Commands:
+
+- Toggle (ID: control:fullscreen:toggle)
+- Toggle on (ID: control:fullscreen:true)
+- Toggle off (ID: control:fullscreen:false)
+
+---
+
+Settings:
+- Label: displayed name (default: "Full-screen")
+- State: <b style="color: green">enabled</b> / <b style="color: red">disabled</b> (default: <b style="color: red">disabled</b>)
+- Active label: displayed label when enabled (default: "Active")
+- Inactive label: displayed label when disabled (default: "")
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/fullscreen.gif"/>
+
+</details>
+
+## 🔳 Panels
+
+Panels are versatile containers, available in both vertical and 
+horizontal orientations, that you can insert into the Teleprompter 
+window to showcase a variety of controls and additional information. 
+You can add as many panels as you need and tailor their content, dimensions, positioning, and other attributes to match your specific requirements.
+
+Currently, there are two types of panels available:
+
+### Control panel
+
+<details>
+  <summary>Contains a list of controls that you can add, remove, reorder, and configure.</summary>
+
+---
+
+Settings:
+- Name: displayed name (default: "Control panel")
+- Location: where the panel is placed (default: "Top")
+  - Top
+  - Bottom
+  - Left
+  - Right
+- Width: width of the panel (default: 250 pixels), only for "Left" and "Right" locations
+- Height: height of the panel (default: 48 pixels), only for "Top" and "Bottom" locations
+- Alignment: alignment of the panel (default: "Center"), only for "Left" and "Right" locations
+  - Default
+  - Center
+  - Left
+  - Right
+- Controls: list of controls that will be displayed in the panel
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/control-panel.gif"/>
+
+<img src="./assets/screenshots/features/control-panel-settings.png"/>
+
+</details>
+
+### Page minimap
+
+<details>
+  <summary>Displays a minimap of the content for easy navigation and better context awareness.</summary>
+
+---
+
+Settings:
+- Name: displayed name (default: "Control panel")
+- Location: where the panel is placed (default: "Right")
+    - Left
+    - Right
+- Width: width of the panel (default: 156 pixels)
+- Alignment: alignment of the panel (default: "Center"),
+    - Default
+    - Center
+    - Left
+    - Right
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/pagemap.gif"/>
+
+</details>
+
+## ⌨️ Hotkeys
+
+Use hotkeys for all possible actions within the Teleprompter window.  
+In total, the plugin provides **60 commands** that can be mapped to hotkeys.
+
+### Controls hotkeys
+
+Controls provide commands that are specific to their functionality.
+See the detailed description of the control you're interested
+in to learn what commands it provides.
+
+### Content hotkeys
+
+- Scroll to top (ID: content:scroll-to-top)
+- Scroll to bottom (ID: content:scroll-to-bottom)
+- Scroll up 50 pixels (ID: content:scroll-up)
+- Scroll down 50 pixels (ID: content:scroll-down)
+
+### Additional hotkeys
+
+- Open teleprompter in sidebar (ID: open-app:sidebar)
+- Open teleprompter in a new tab (ID: open-app:new-tab)
+- Open teleprompter in a new window (ID : open-app:new-window)
+
+## 📦 Installation
+
+This plugin is pending review from the Obsidian team. After the review is complete
+and the plugin is approved, it will become possible to install it from
+the Community plugins catalog. Until then, you can install it manually.
 
 ### Manual Installation
 
@@ -107,23 +811,24 @@ Only manual installation is supported at the moment.
 2. Extract `obsidian-teleprompter` folder from the zip
    to your vault's plugins folder `<vault>/.obsidian/plugins/` (note that `.obsidian` folder may be hidden by default)
 3. Restart Obsidian
-4. Open "Settings" -> "Community plugins" and activate "Teleprompter"
+4. Open **Settings** -> **Community plugins** and activate **Teleprompter**
 
-For details see [the forums](https://forum.obsidian.md/t/plugins-mini-faq/7737).
+For details see [the forum](https://forum.obsidian.md/t/plugins-mini-faq/7737).
 
-## Disclosures
-In accordance with 
-[Obsidian's developer policies](https://docs.obsidian.md/Developer+policies), 
-it is required to transparently disclose the presence of any static ads, 
+## 📢 Disclosures
+
+In accordance with
+[Obsidian's developer policies](https://docs.obsidian.md/Developer+policies),
+it is required to transparently disclose the presence of any static ads,
 such as banners and pop-up messages, within the plugin's interface.
 
-This plugin includes a single [static ad](./assets/screenshots/settings-about.png), 
-which is accessible exclusively on the "About" page within the settings. 
-The ad is a link to a [project](https://lumetrium.com/definer) developed by the same 
-author responsible for this plugin. It's important to emphasize that 
+This plugin includes a single [static ad](./assets/screenshots/settings-about.png),
+which is accessible exclusively on the "About" page within the settings.
+The ad is a link to a [project](https://lumetrium.com/definer) developed by the same
+author responsible for this plugin. It's important to emphasize that
 there is no involvement of any third-party advertising.
 
-## Recommendations
+## 💡️ Recommendations
 
 Check out this browser extension made by the same author:
 
