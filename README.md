@@ -2,9 +2,7 @@
 
 <div align="center">
 
-[![](https://img.shields.io/github/v/release/lumetrium/obsidian-teleprompter?style=for-the-badge)](https://github.com/lumetrium/obsidian-teleprompter/releases/latest)
-![](https://img.shields.io/github/downloads/lumetrium/obsidian-teleprompter/total?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/lumetrium/obsidian-teleprompter?style=for-the-badge)
+[![](https://img.shields.io/github/v/release/lumetrium/obsidian-teleprompter?style=for-the-badge)](https://github.com/lumetrium/obsidian-teleprompter/releases/latest) ![](https://img.shields.io/github/downloads/lumetrium/obsidian-teleprompter/total?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/lumetrium/obsidian-teleprompter?style=for-the-badge)
 
 </div>
 <br/>
