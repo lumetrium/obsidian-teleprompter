@@ -23,12 +23,12 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
   <img src="./assets/screenshots/devices.png"/>
 </p>
 
-# 📖 Table of contents
+# Table of contents
 
-- [📃 About the plugin](#about-the-plugin)
-- [📸 Screenshots](#screenshots)
-- [🌟 Features](#features)
-  - [🕹️ Controls](#controls)
+- [About the plugin](#about-the-plugin)
+- [Screenshots](#screenshots)
+- [Features](#features)
+  - [Controls](#controls)
     - [Play](#play)
     - [Pin note](#pin-note)
     - [Speed](#speed)
@@ -47,18 +47,19 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
     - [Opacity](#opacity)
     - [Open settings](#open-settings)
     - [Full-screen](#full-screen)
-  - [🔳 Panels](#panels)
+  - [Panels](#panels)
     - [Control panel](#control-panel)
     - [Page minimap](#page-minimap)
-  - [⌨️ Hotkeys](#hotkeys)
+    - [Eyeline indicator](#eyeline-indicator)
+  - [Hotkeys](#hotkeys)
     - [Controls hotkeys](#controls-hotkeys)
     - [Content hotkeys](#content-hotkeys)
     - [Additional hotkeys](#additional-hotkeys)
-- [📦 Installation](#installation)
-  - [Community plugins catalog](#community-plugins-catalog)
+- [Installation](#installation)
+  - [Quick installation](#quick-installation)
   - [Manual Installation](#manual-installation)
-- [📢 Disclosures](#disclosures)
-- [💡 Recommendations](#recommendations)
+- [Disclosures](#disclosures)
+- [Recommendations](#recommendations)
 
 Please note that some of the sections under "Features" contain collapsable content with further details and demos. You can expand them by clicking on their descriptions.
 
@@ -748,7 +749,7 @@ Demo:
 ---
 
 Settings:
-- Name: displayed name (default: "Control panel")
+- Name: displayed name (default: "Page minimap")
 - Location: where the panel is placed (default: "Right")
     - Left
     - Right
@@ -764,6 +765,32 @@ Settings:
 Demo:
 
 <img src="./assets/screenshots/features/pagemap.gif"/>
+
+</details>
+
+### Eyeline indicator
+
+<details>
+  <summary>Displays a visual cue that helps in maintaining constant eye focus in a single place and a steady reading flow.</summary>
+
+---
+
+Settings:
+- Name: displayed name (default: "Control panel")
+- Location: where the panel is placed (default: "Left")
+    - Left
+    - Right
+- Width: width of the panel (default: 65 pixels)
+- Position: indicator's offset from top in % (default: 20%)
+- Color: color of the indicator (default: Obsidian's text color)
+
+---
+
+Demo:
+
+<img src="./assets/screenshots/features/eyeline.png"/>
+
+<img src="./assets/screenshots/features/eyeline-settings.png"/>
 
 </details>
 
@@ -787,11 +814,11 @@ Controls provide commands that are specific to their functionality. See the deta
 
 - Open teleprompter in sidebar (ID: open-app:sidebar)
 - Open teleprompter in a new tab (ID: open-app:new-tab)
-- Open teleprompter in a new window (ID : open-app:new-window)
+- Open teleprompter in a new window (ID : open-app:new-[]()window)
 
 ## Installation
 
-### Community plugins catalog
+### Quick installation
 
 Click [HERE](https://obsidian.md/plugins?id=teleprompter) to open the installation page in Obsidian.  
 For details see the [official installation instructions](https://help.obsidian.md/Extending+Obsidian/Community+plugins).
@@ -817,7 +844,7 @@ This plugin includes a single [static ad](./assets/screenshots/settings-about.pn
 Check out this browser extension made by the same author:
 
 <a href="https://lumetrium.com/definer">
-  <img src="./assets/logos/definer.png" style="margin-right: 0.7em" height="30px" align="left"/>
+  <img src="./assets/logos/definer.png" style="margin: 0.3em 0.6em 0 0" height="30px" align="left"/>
 </a>
 
 **[Definer - Popup Dictionary & Translator](https://lumetrium.com/definer)**  

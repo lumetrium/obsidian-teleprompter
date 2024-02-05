@@ -34,13 +34,13 @@
     />
 
     <SettingsField
-      v-if="isVertical"
+      v-if="isVertical && availableAlignmentItems.length > 1"
       label="Alignment"
       desc="How the content of the panel is aligned"
     >
       <SelectInput
         v-model="state.alignment"
-        :items="alignmentItems"
+        :items="availableAlignmentItems"
       />
     </SettingsField>
 
@@ -53,25 +53,13 @@
 
 <script setup lang="ts">
 import SelectInput from '@/components/SelectInput.vue'
-import { PanelAlignment, PanelLocation } from '@/features/panel/constants'
 import type { PanelState, PluggablePanel } from '@/features/panel/types'
 import SettingsField from '@/features/settings/components/elements/SettingField.vue'
 import { useSettingItemStore } from '@/features/settings/store/setting-item.store'
-import {
-  mdiDockBottom,
-  mdiDockLeft,
-  mdiDockRight,
-  mdiDockTop,
-  mdiFormatAlignCenter,
-} from '@mdi/js'
-import { computed, Ref, unref } from 'vue'
-import {
-  usePanelStore,
-  useProvidePanelStore,
-} from '@/features/panel/store/panel.store'
-import { usePanelLocation } from '@/features/panel/hooks/usePanelLocation'
+import { computed, unref } from 'vue'
+import { useProvidePanelStore } from '@/features/panel/store/panel.store'
 
-const { state, components, item, target } = useSettingItemStore<
+const { state, components, target } = useSettingItemStore<
   PanelState,
   PluggablePanel
 >()
@@ -84,6 +72,13 @@ const availableLocationItems = computed(() => {
   return !allowed?.length
     ? locationItems.value
     : locationItems.value.filter((item) => allowed.includes(item.value))
+})
+
+const availableAlignmentItems = computed(() => {
+  const allowed = unref(panel.value.alignments)
+  return !Array.isArray(allowed)
+    ? alignmentItems.value
+    : alignmentItems.value.filter((item) => allowed.includes(item.value))
 })
 
 const component = computed(() => components.settings?.())

@@ -9,7 +9,8 @@ import type { MaybeRef } from 'vue'
 export type PanelLocationType =
   (typeof PanelLocation)[keyof typeof PanelLocation]
 
-export type PanelAlignType = (typeof PanelAlignment)[keyof typeof PanelAlignment]
+export type PanelAlignType =
+  (typeof PanelAlignment)[keyof typeof PanelAlignment]
 
 export interface PanelHandle {
   width: string
@@ -38,6 +39,7 @@ export interface PanelOptions<
 > extends PluggableOptions<T> {
   plugins?: MaybeRef<PluggableMap>
   locations?: MaybeRef<PanelLocationType[]>
+  alignments?: MaybeRef<PanelAlignType[]>
 }
 
 export type PluggablePanel<ItemState = unknown> = Pluggable<

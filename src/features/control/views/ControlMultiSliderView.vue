@@ -29,8 +29,7 @@ const { value, min, max, step, labels } = toRefs(state.value)
   flex-direction: column;
   gap: 0.5em;
 
-  ::v-deep(.v-label) {
-    //text-align: right;
+  :deep(.v-label) {
     min-width: 60px;
     justify-content: flex-end;
     justify-self: flex-end;

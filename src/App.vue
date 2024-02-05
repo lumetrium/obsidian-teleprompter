@@ -14,7 +14,7 @@ import AppPanels from '@/layout/AppPanels.vue'
 .v-application {
   background: transparent;
 
-  ::v-deep(.v-application__wrap) {
+  :deep(.v-application__wrap) {
     min-height: 0;
     height: 100%;
   }

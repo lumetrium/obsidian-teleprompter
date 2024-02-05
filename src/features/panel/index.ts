@@ -33,10 +33,12 @@ export const usePanelFeature = defineFeature('panel', (id) => {
   const getPanelFromPlugin = getClonePluginCustom<PluggablePanel>(
     (clone, plugin, extendWith) => {
       const items = unref(extendWith?.state?.items) ?? unref(clone.state.items)
-      clone.state.items = mergeArrayWithPlugins(
-        (items ?? []) as PluggableReducedItem[],
-        plugin.plugins,
-      )
+      clone.state.items = plugin.plugins
+        ? mergeArrayWithPlugins(
+            (items ?? []) as PluggableReducedItem[],
+            plugin.plugins,
+          )
+        : (items ?? [])
     },
   )
 

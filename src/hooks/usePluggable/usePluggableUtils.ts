@@ -96,7 +96,7 @@ export function usePluggableUtils() {
     mergeFn: typeof clonePlugin<S> = clonePlugin,
   ): Pluggable<S>[] {
     return arr.reduce((acc, item) => {
-      const plugin = unref(unref(plugins)[item.id])
+      const plugin = unref(unref(plugins)?.[item.id])
       if (plugin) acc.push(mergeFn(plugin, item))
       return acc
     }, [])

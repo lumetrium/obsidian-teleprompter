@@ -58,9 +58,5 @@ watch(() => props.pause, scroll)
   overflow-x: hidden;
   box-sizing: border-box;
   width: 100%;
-
-  > ::v-deep(*:first-child) {
-    //padding: 0 0 100%;
-  }
 }
 </style>

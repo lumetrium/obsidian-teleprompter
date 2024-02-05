@@ -1,8 +1,7 @@
 import { usePanelFeature } from '@/features/panel'
 import type { PanelState, PluggablePanel } from '@/features/panel/types'
 import { createInjectionState } from '@/utils/createInjectionState'
-import { computed, reactive, type Ref, type WritableComputedRef } from 'vue'
-import { PanelLocation } from '@/features/panel/constants'
+import { computed, type Ref, type WritableComputedRef } from 'vue'
 import type { Modify } from '@/utils/utility-types'
 import { usePanelLocation } from '@/features/panel/hooks/usePanelLocation'
 
@@ -25,12 +24,17 @@ const [useProvidePanelStore, useDefaultPanelStore] = createInjectionState(
       )
     }
 
+    function patchState(partialState: Partial<PanelState>) {
+      state.value = { ...state.value, ...partialState }
+    }
+
     return {
       panel,
       state,
       ...location,
 
       getIsCompact,
+      patchState,
     }
   },
 )
