@@ -776,7 +776,7 @@ Demo:
 ---
 
 Settings:
-- Name: displayed name (default: "Control panel")
+- Name: displayed name (default: "Eyeline indicator")
 - Location: where the panel is placed (default: "Left")
     - Left
     - Right
