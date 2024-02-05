@@ -49,3 +49,10 @@ yarn build
 ```bash
 yarn test:vitest
 ```
+
+## Releasing
+https://docs.obsidian.md/Plugins/Releasing/Release+your+plugin+with+GitHub+Actions
+```
+git tag -a 1.0.1 -m "1.0.1"
+git push origin 1.0.1
+```
