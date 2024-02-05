@@ -780,7 +780,7 @@ Settings:
 - Location: where the panel is placed (default: "Left")
     - Left
     - Right
-- Width: width of the panel (default: 65 pixels)
+- Width: width of the panel (default: 48 pixels)
 - Position: indicator's offset from top in % (default: 20%)
 - Color: color of the indicator (default: Obsidian's text color)
 

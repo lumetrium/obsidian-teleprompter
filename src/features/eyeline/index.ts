@@ -23,7 +23,7 @@ export const useEyelineFeature = defineFeature('eyeline', (id) => {
       location: PanelLocation.LEFT,
       isOpen: true,
       icon: mdiPlay,
-      width: 65,
+      width: 48,
       minWidth: 15,
       items: indicators,
     },
