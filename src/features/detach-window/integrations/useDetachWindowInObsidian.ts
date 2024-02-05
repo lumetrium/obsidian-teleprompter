@@ -35,7 +35,12 @@ export function useDetachWindowInObsidian(options: {
   app.workspace.on('window-close', update)
 
   function isDetached() {
-    return window !== activeWindow
+    const leaves = app.workspace.getLeavesOfType(viewType)
+    const activeWin =
+      leaves.length > 0
+        ? leaves[0].view.containerEl.ownerDocument.defaultView
+        : activeWindow
+    return window !== activeWin
   }
 
   update()
