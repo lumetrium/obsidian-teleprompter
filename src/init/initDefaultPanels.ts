@@ -20,6 +20,7 @@ import { useFlipYFeature } from '@/features/flip/flip-y'
 import { useFullscreenFeature } from '@/features/fullscreen'
 import { useDetachWindowFeature } from '@/features/detach-window'
 import { useOpacityFeature } from '@/features/opacity'
+import { useEyelineFeature } from '@/features/eyeline'
 
 export function initDefaultPanels() {
   const panelFeatureStore = usePanelFeature().useStore()
@@ -27,6 +28,7 @@ export function initDefaultPanels() {
 
   const controlPanelPlugin = panelFeatureStore.plugins[useControlFeature().id]
   const pagemapPanelPlugin = panelFeatureStore.plugins[usePagemapFeature().id]
+  const eyelinePanelPlugin = panelFeatureStore.plugins[useEyelineFeature().id]
 
   const controlPlugins = useControlFeature().useStore().plugins
 
@@ -92,10 +94,10 @@ export function initDefaultPanels() {
     createPanel(pagemapPanelPlugin, () => ({
       name: 'Page minimap',
     })),
-    createPanel(pagemapPanelPlugin, () => ({
-      name: 'Page minimap extra',
+    createPanel(eyelinePanelPlugin, () => ({
+      name: 'Eyeline indicator',
       location: PanelLocation.LEFT,
-      width: 80,
+      width: 48,
       isOpen: false,
     })),
   ])
