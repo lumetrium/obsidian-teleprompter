@@ -843,9 +843,9 @@ This plugin includes a single [static ad](./assets/screenshots/settings-about.pn
 
 Check out this browser extension made by the same author:
 
-<a href="https://lumetrium.com/definer">
-  <img src="./assets/logos/definer.png" style="margin: 0.3em 0.6em 0 0" height="30px" align="left"/>
+<a href="https://chromewebstore.google.com/detail/definer-popup-dictionary/noagjioaihamoljcbelhdlldnmlgnkon?utm_source=teleprompter&utm_medium=referral&utm_content=readme">
+  <img src="./assets/logos/definer.png" style="margin-right: 1em" height="40px" align="left"/>
 </a>
 
-**[Definer - Popup Dictionary & Translator](https://lumetrium.com/definer)**  
+**[Definer - Popup Dictionary & Translator](https://chromewebstore.google.com/detail/definer-popup-dictionary/noagjioaihamoljcbelhdlldnmlgnkon?utm_source=teleprompter&utm_medium=referral&utm_content=readme)**  
 Instant definitions, translations, and search results for words and phrases you select or type.

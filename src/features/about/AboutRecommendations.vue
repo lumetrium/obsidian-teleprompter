@@ -1,12 +1,9 @@
 <template>
   <div>
     <div class="text-h5">Recommendations</div>
-    <div class="mt-1 mb-4">
-      Boost your overall productivity with this
-      highly customizable browser extension:
-    </div>
+    <div class="mt-1 mb-4">Try another tool made by the same developer:</div>
     <a
-      href="https://lumetrium.com/definer"
+      href="https://chromewebstore.google.com/detail/definer-popup-dictionary/noagjioaihamoljcbelhdlldnmlgnkon?utm_source=teleprompter&utm_medium=referral&utm_content=ui_about"
       class="recommendation"
     >
       <DefinerLogo height="50" />
