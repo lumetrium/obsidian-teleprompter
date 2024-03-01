@@ -39,12 +39,12 @@ const [useProvidePanelStore, useDefaultPanelStore] = createInjectionState(
   },
 )
 
-function usePanelStore<Item>() {
+function usePanelStore<Item, Data = unknown>() {
   return useDefaultPanelStore() as Modify<
     ReturnType<typeof useDefaultPanelStore>,
     {
-      panel: Ref<PluggablePanel<Item>>
-      state: WritableComputedRef<PanelState<Item>>
+      panel: Ref<PluggablePanel<Item, Data>>
+      state: WritableComputedRef<PanelState<Item, Data>>
     }
   >
 }

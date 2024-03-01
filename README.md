@@ -782,6 +782,10 @@ Settings:
     - Right
 - Width: width of the panel (default: 48 pixels)
 - Position: indicator's offset from top in % (default: 20%)
+- Background color: color of the panel's background (default: "Default")
+    - Default
+    - Follow content
+    - Custom
 - Color: color of the indicator (default: Obsidian's text color)
 
 ---

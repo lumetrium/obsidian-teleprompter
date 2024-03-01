@@ -2,6 +2,7 @@
   <div
     ref="eyelineEl"
     class="eyeline"
+    :style="styles"
   >
     <div
       ref="indicatorEl"
@@ -21,18 +22,38 @@ import { usePanelStore } from '@/features/panel/store/panel.store'
 import EyelineIndicatorView from '@/features/eyeline/EyelineIndicatorView.vue'
 import debounce from 'lodash/debounce'
 import type { EyelineIndicator } from '@/features/eyeline/types'
+import type { EyelinePanelData } from '@/features/eyeline/types'
+import { useBgColorFeature } from '@/features/bg-color'
 
 const eyelineEl = ref<HTMLElement>()
 const indicatorEl = ref<HTMLElement>()
 
 const isDragging = ref(false)
+const bgColorStore = useBgColorFeature().useStore()
 
-const { state: panelState, patchState: patchPanelState } =
-  usePanelStore<EyelineIndicator>()
+const { state: panelState, patchState: patchPanelState } = usePanelStore<
+  EyelineIndicator,
+  EyelinePanelData
+>()
 
 const indicator = computed({
   get: () => panelState.value.items[0],
   set: (value) => patchPanelState({ items: [value] }),
+})
+
+const background = computed(() => {
+  const value = panelState.value.data.background
+  if (!value) return ''
+  if (value === 'follow-content') {
+    return bgColorStore.value ?? bgColorStore.defaultColor
+  }
+  return value
+})
+
+const styles = computed(() => {
+  return {
+    backgroundColor: background.value,
+  }
 })
 
 watch(
@@ -111,6 +132,7 @@ onBeforeUnmount(() => {
 .eyeline {
   position: relative;
   height: 100%;
+  transition: background-color 300ms;
 }
 
 .eyeline-indicator {

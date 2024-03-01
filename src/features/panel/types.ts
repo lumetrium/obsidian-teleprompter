@@ -18,7 +18,7 @@ export interface PanelHandle {
   hoverColor: string
 }
 
-export interface PanelState<ItemState = unknown> {
+export interface PanelState<ItemState = unknown, Data = unknown> {
   name: string
   location: PanelLocationType
   isOpen: boolean
@@ -31,18 +31,20 @@ export interface PanelState<ItemState = unknown> {
   handle?: PanelHandle
   items?: ItemState[]
   icon?: string
+  data?: Data,
 }
 
 export interface PanelOptions<
   ItemState = unknown,
-  T extends PanelState<ItemState> = PanelState<ItemState>,
+  Data = unknown,
+  T extends PanelState<ItemState, Data> = PanelState<ItemState, Data>,
 > extends PluggableOptions<T> {
   plugins?: MaybeRef<PluggableMap>
   locations?: MaybeRef<PanelLocationType[]>
   alignments?: MaybeRef<PanelAlignType[]>
 }
 
-export type PluggablePanel<ItemState = unknown> = Pluggable<
-  PanelState<ItemState>,
-  PanelOptions<ItemState>
+export type PluggablePanel<ItemState = unknown, Data = unknown> = Pluggable<
+  PanelState<ItemState, Data>,
+  PanelOptions<ItemState, Data>
 >

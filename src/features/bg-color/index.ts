@@ -9,6 +9,7 @@ export const useBgColorFeature = defineFeature('bg-color', (id) => {
   const value = ref(null)
   const label = 'Background color'
   const desc = 'Content\'s background color'
+  const defaultColor = 'var(--color-base-00)'
 
   useControlFeature().use({
     id,
@@ -33,13 +34,14 @@ export const useBgColorFeature = defineFeature('bg-color', (id) => {
       name: label,
     },
     styles: {
-      backgroundColor: computed(() => value.value ?? 'var(--color-base-00)'),
+      backgroundColor: computed(() => value.value ?? defaultColor),
     },
   })
 
   return {
     useStore: () => ({
       value,
+      defaultColor,
     }),
   }
 })

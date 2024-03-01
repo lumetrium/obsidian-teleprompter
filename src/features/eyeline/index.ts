@@ -26,6 +26,9 @@ export const useEyelineFeature = defineFeature('eyeline', (id) => {
       width: 48,
       minWidth: 15,
       items: indicators,
+      data: {
+        background: null,
+      },
     },
     components: {
       content: () => Eyeline,
