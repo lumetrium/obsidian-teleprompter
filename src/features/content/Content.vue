@@ -88,5 +88,6 @@ const contentModifiers = computed(() =>
 .content {
   transition: none 100ms ease-in-out;
   transition-property: padding, margin;
+  white-space: pre-line;
 }
 </style>
