@@ -21,6 +21,7 @@ import { useContentDimensionsObserver } from '@/features/content/hooks/useConten
 import { useContentScroller } from '@/features/content/hooks/useContentScrolller'
 import { useSpeedFeature } from '@/features/speed'
 import { usePlayFeature } from '@/features/play'
+import { useCountdownFeature } from '@/features/countdown'
 
 const { content, modifiersList } = toRefs(useProvideContentStore())
 
@@ -36,10 +37,15 @@ const element = ref()
 
 const { value: speed } = toRefs(useSpeedFeature().useStore())
 const { value: isPlaying } = toRefs(usePlayFeature().useStore())
+const { value: countdown } = toRefs(useCountdownFeature().useStore())
+
+const isEnabledAutoscroll = computed(
+  () => isPlaying.value && countdown.value <= 0,
+)
 
 if (!props.static) {
   useContentDimensionsObserver(element)
-  useContentScroller({ element, speed, isPlaying })
+  useContentScroller({ element, speed, isPlaying: isEnabledAutoscroll })
 }
 
 const containerModifiers = computed(() =>

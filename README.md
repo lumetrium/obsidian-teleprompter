@@ -30,6 +30,7 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
 - [Features](#features)
   - [Controls](#controls)
     - [Play](#play)
+    - [Countdown](#countdown)
     - [Pin note](#pin-note)
     - [Speed](#speed)
     - [Font size](#font-size)
@@ -142,6 +143,42 @@ Settings:
 Demo:
 
 <img src="./assets/screenshots/features/play.gif" />
+
+</details>
+
+### Countdown
+
+<details>
+  <summary>Set the delay before starting auto-scrolling </summary>
+
+---
+
+Commands:
+- Increase with step X (ID: control:countdown:up)
+- Decrease with step X (ID: control:countdown:down)
+- Reset (ID: control:countdown:reset)
+- Reset on pause - toggle (ID: countdown:reset-on-pause:toggle)
+- Reset on pause - toggle on (ID: countdown:reset-on-pause:true)
+- Reset on pause - toggle off (ID: countdown:reset-on-pause:false)
+
+**step can be configured in the settings*
+
+---
+
+Settings:
+- Label: displayed name (default: "Countdown")
+- Value: current delay (default: 0, which means no delay before play)
+- Reset value: delay that will be applied when you reset it (default: 10)
+- Minimum: lowest possible delay (default: 0)
+- Maximum: highest possible delay (default: 30)
+- Step: how much the value will increase or decrease at a time (default: 1)
+- Reset on pause: apply "Reset value" to the countdown on pause (default: Disabled)
+
+---
+
+Demo:
+
+<img src="https://i.imgur.com/BnTu2PF.gif" />
 
 </details>
 

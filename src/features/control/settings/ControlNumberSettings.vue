@@ -34,6 +34,8 @@
       desc="How much the value will increase/decrease at a time"
       type="number"
     />
+
+    <slot />
   </div>
 </template>
 
