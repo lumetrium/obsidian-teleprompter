@@ -1,14 +1,21 @@
 import { useContentFeature } from '@/features/content'
-import { PluggableControl } from '@/features/control/types'
 import { createInjectionState } from '@/utils/createInjectionState'
-import {computed, reactive, ref, UnwrapNestedRefs} from 'vue'
-import { toRefs } from 'vue'
+import { computed, reactive, toRefs, unref } from 'vue'
 
 const [useProvideContentStore, useDefaultContentStore] = createInjectionState(
   () => {
     const store = toRefs(useContentFeature().useStore())
     return reactive({
       ...store,
+      contentProcessed: computed(() => {
+        let content = unref(store.content)
+
+        if (!unref(store.propertiesVisibility) && content.startsWith('---')) {
+          content = content.replace(/^---[\s\S]*?---/, '')
+        }
+
+        return content
+      }),
     })
   },
 )

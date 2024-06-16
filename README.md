@@ -210,6 +210,9 @@ Settings:
 - Inactive label: displayed label when disabled (default: "Unpinned")
 
 ---
+> Note: Pinned notes do not automatically update in the teleprompter 
+when the content of the note changes.
+---
 
 Demo:
 

@@ -1,9 +1,4 @@
-import type {
-  App,
-  ObsidianProtocolData,
-  ObsidianProtocolHandler,
-  Workspace,
-} from 'obsidian'
+import type { App, ObsidianProtocolHandler, Workspace } from 'obsidian'
 import { useCommandFeature } from '@/features/commands'
 import {
   activateViewInObsidian,
@@ -44,8 +39,7 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
   }
 
   const activateView = activateViewInObsidian.bind(null, viewType, workspace)
-  const updateContent = (c: string) =>
-    (useContentFeature().useStore().content = c)
+  const updateContent = useContentFeature().useStore().updateContent
 
   async function openWithParams(params: OpenAppParams = {}) {
     const falsy = [false, 0, 'false', 'no', 'off', '0']

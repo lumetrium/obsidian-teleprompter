@@ -11,6 +11,6 @@ import removeMd from 'remove-markdown'
 import { computed } from 'vue'
 import { toRefs } from 'vue'
 
-const { content } = toRefs(useContentStore())
-const plain = computed(() => removeMd(content.value))
+const { contentProcessed } = toRefs(useContentStore())
+const plain = computed(() => removeMd(contentProcessed.value))
 </script>

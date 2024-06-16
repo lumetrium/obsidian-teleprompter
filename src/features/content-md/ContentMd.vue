@@ -1,7 +1,7 @@
 <template>
   <vue-markdown
     class="md-content"
-    :source="content"
+    :source="contentProcessed"
   />
 </template>
 
@@ -10,5 +10,5 @@ import { useContentStore } from '@/features/content/store/content.store'
 import VueMarkdown from 'vue-markdown-render'
 import { toRefs } from 'vue'
 
-const { content } = toRefs(useContentStore())
+const { contentProcessed } = toRefs(useContentStore())
 </script>

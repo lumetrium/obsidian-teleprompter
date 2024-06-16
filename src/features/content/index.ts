@@ -29,6 +29,7 @@ export const useContentFeature = defineFeature('content', (id) => {
   const scrollBy = ref<{ deltaY: number }>({ deltaY: 0 })
   const activeViewId = ref<string>()
   const resetViewId = ref<string>()
+  const propertiesVisibility = ref<boolean>(true)
 
   const viewItems = computed(() =>
     Object.values(views.value).map((view) => ({
@@ -82,9 +83,13 @@ export const useContentFeature = defineFeature('content', (id) => {
       contentHeight,
       contentScrollTop,
       contentScrollHeight,
+      propertiesVisibility,
       scrollBy,
       requestToScrollBy(deltaY: number) {
         scrollBy.value = { deltaY }
+      },
+      updateContent(value: string) {
+        content.value = value
       },
     }),
   }

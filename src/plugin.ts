@@ -26,6 +26,7 @@ export default class TeleprompterPlugin extends Plugin {
   async onload() {
     await this.loadSettings()
 
+    this.applyVaultConfig()
     this.updateContent()
     const updateContentDebounced = debounce(this.updateContent.bind(this), 300)
     const updateContentDebouncedIfNotPinned = () => {
@@ -43,6 +44,13 @@ export default class TeleprompterPlugin extends Plugin {
       ),
     )
 
+    this.registerEvent(
+      this.app.vault.on(
+        'config-changed' as any,
+        this.applyVaultConfig.bind(this),
+      ),
+    )
+
     this.addRibbonIcon('scroll', APP_NAME, () =>
       activateViewInObsidian(VIEW_TYPE, this.app.workspace),
     )
@@ -55,6 +63,14 @@ export default class TeleprompterPlugin extends Plugin {
     if (getIsDevMode()) {
       ;(this.app as any).setting.openTabById(APP_ID)
     }
+  }
+
+  applyVaultConfig() {
+    const { config } = this.app.vault as any
+    const propertiesVisibility = config.propertiesInDocument !== 'hidden'
+    const contentStore = useContentFeature().useStore()
+    if (contentStore.propertiesVisibility === propertiesVisibility) return
+    contentStore.propertiesVisibility = propertiesVisibility
   }
 
   async onunload() {
@@ -73,7 +89,7 @@ export default class TeleprompterPlugin extends Plugin {
   updateContent() {
     const view = this.app.workspace.getActiveViewOfType(MarkdownView)
     const content = view?.getViewData()
-    if (content) useContentFeature().useStore().content = content
+    if (content) useContentFeature().useStore().updateContent(content)
   }
 
   async registerFeatures() {

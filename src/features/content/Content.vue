@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import ContentView from '@/features/content/ContentView.vue'
 import { useProvideContentStore } from '@/features/content/store/content.store'
-import { computed, ref, toRefs, unref } from 'vue'
+import { computed, ref, toRefs } from 'vue'
 import { useContentDimensionsObserver } from '@/features/content/hooks/useContentDimensionsObserver'
 import { useContentScroller } from '@/features/content/hooks/useContentScrolller'
 import { useSpeedFeature } from '@/features/speed'
