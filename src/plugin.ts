@@ -13,25 +13,34 @@ import { useOpenAppInObsidian } from '@/features/open-app/integrations/useOpenAp
 import { useOpenSettingsInObsidian } from '@/features/open-settings/integrations/useOpenSettingsInObsidian'
 import { useCommandsObsidian } from '@/features/commands/integrations/useCommandsInObsidian'
 import { setPlatformInObsidian } from '@/features/platform/integrations/setPlatformInObsidian'
+import { usePublicApiRegistry } from '@/utils/usePublicApiRegistry'
 
 export default class TeleprompterPlugin extends Plugin {
   settings: Record<string, any> = {}
   unloadQueue: (() => void)[] = []
+
+  get api(): Record<string, unknown> {
+    return usePublicApiRegistry().list()
+  }
 
   async onload() {
     await this.loadSettings()
 
     this.updateContent()
     const updateContentDebounced = debounce(this.updateContent.bind(this), 300)
+    const updateContentDebouncedIfNotPinned = () => {
+      if (usePinNoteFeature().useStore().value) return
+      updateContentDebounced()
+    }
 
     this.registerEvent(
-      this.app.metadataCache.on('changed', updateContentDebounced),
+      this.app.metadataCache.on('changed', updateContentDebouncedIfNotPinned),
     )
     this.registerEvent(
-      this.app.workspace.on('active-leaf-change', () => {
-        if (usePinNoteFeature().useStore().value) return
-        updateContentDebounced()
-      }),
+      this.app.workspace.on(
+        'active-leaf-change',
+        updateContentDebouncedIfNotPinned,
+      ),
     )
 
     this.addRibbonIcon('scroll', APP_NAME, () =>
@@ -44,7 +53,7 @@ export default class TeleprompterPlugin extends Plugin {
     this.registerView(VIEW_TYPE, (leaf) => new TeleprompterView(leaf))
 
     if (getIsDevMode()) {
-      this.app.setting.openTabById(APP_ID)
+      ;(this.app as any).setting.openTabById(APP_ID)
     }
   }
 

@@ -1529,10 +1529,10 @@ nth-check@^2.1.1:
   dependencies:
     boolbase "^1.0.0"
 
-obsidian@^1.4.11:
-  version "1.4.11"
-  resolved "https://registry.yarnpkg.com/obsidian/-/obsidian-1.4.11.tgz#5cba594c83a74ebad58b630c610265018abdadaa"
-  integrity sha512-BCVYTvaXxElJMl6MMbDdY/CGK+aq18SdtDY/7vH8v6BxCBQ6KF4kKxL0vG9UZ0o5qh139KpUoJHNm+6O5dllKA==
+obsidian@^1.5.7-1:
+  version "1.5.7-1"
+  resolved "https://registry.yarnpkg.com/obsidian/-/obsidian-1.5.7-1.tgz#6e367f015f6a1b6b13204135434bbe3c04d4dfc3"
+  integrity sha512-T5ZRuQ1FnfXqEoakTTHVDYvzUEEoT8zSPnQCW31PVgYwG4D4tZCQfKHN2hTz1ifnCe8upvwa6mBTAP2WUA5Vng==
   dependencies:
     "@types/codemirror" "5.60.8"
     moment "2.29.4"

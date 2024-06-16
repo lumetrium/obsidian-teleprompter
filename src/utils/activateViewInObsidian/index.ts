@@ -1,9 +1,11 @@
 import type { Workspace } from 'obsidian'
 
+export type Placement = 'sidebar' | 'tab' | 'window'
+
 export async function activateViewInObsidian(
   viewType: string,
   workspace: Workspace,
-  placement?: 'sidebar' | 'tab' | 'window',
+  placement?: Placement,
 ) {
   const leaves = workspace.getLeavesOfType(viewType)
 
@@ -23,7 +25,5 @@ export async function activateViewInObsidian(
     })
   }
 
-  workspace.revealLeaf(
-    workspace.getLeavesOfType(viewType)[0],
-  )
+  workspace.revealLeaf(workspace.getLeavesOfType(viewType)[0])
 }

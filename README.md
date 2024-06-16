@@ -56,6 +56,11 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
     - [Controls hotkeys](#controls-hotkeys)
     - [Content hotkeys](#content-hotkeys)
     - [Additional hotkeys](#additional-hotkeys)
+  - [API](#api)
+    - [Methods](#methods)
+      - [open(params)](#openparams)
+      - [close()](#close)
+  - [Protocol handlers](#protocol-handlers)
 - [Installation](#installation)
   - [Quick installation](#quick-installation)
   - [Manual Installation](#manual-installation)
@@ -838,7 +843,7 @@ Demo:
 ## Hotkeys
 
 Use hotkeys for all possible actions within the Teleprompter window. 
-In total, the plugin provides **60 commands** that can be mapped to hotkeys.
+In total, the plugin provides **72 commands** that can be mapped to hotkeys.
 
 ### Controls hotkeys
 
@@ -853,9 +858,68 @@ Controls provide commands that are specific to their functionality. See the deta
 
 ### Additional hotkeys
 
+#### Open teleprompter for current note
 - Open teleprompter in sidebar (ID: open-app:sidebar)
 - Open teleprompter in a new tab (ID: open-app:new-tab)
-- Open teleprompter in a new window (ID : open-app:new-[]()window)
+- Open teleprompter in a new window (ID : open-app:new-window)
+
+#### Select a file to open in teleprompter
+- Open file in sidebar and pin it (ID: open-app:sidebar:file)
+- Open file in a new tab and pin it (ID: open-app:new-tab:file)
+- Open file in a new window and pin it (ID: open-app:new-window:file)
+
+#### Input arbitrary text to open in teleprompter
+- Open arbitrary text in sidebar and pin it (ID: open-app:sidebar:text)
+- Open arbitrary text in a new tab and pin it (ID: open-app:new-tab:text)
+- Open arbitrary text in a new window and pin it (ID: open-app:new-window:text)
+
+## API
+You can control some of the plugin's features programmatically using the API. 
+The API is accessible through the `api` object, 
+available in the plugin's instance within Obsidian, 
+through the `app.plugins.plugins.teleprompter` object.
+
+### Methods
+
+#### open(params)
+
+Signature
+```
+open: ({ 
+  file?: string, // path to the file to display in the teleprompter
+  content?: string, // content to display in the teleprompter (overrides `file` if both are provided)
+  placement?: 'sidebar' | 'tab' | 'window', // where to open the teleprompter window
+  pin?: boolean, // whether to pin the note after opening it (unpin if `false`)
+  play?: boolean, // whether to start auto-scrolling (stop if `false`)
+  countdown?: number // delay in seconds before starting auto-scrolling
+}) => void
+```
+Example usage:
+```
+app.plugins.plugins.teleprompter.open({
+  content: "Hello, world!",
+  placement: "window",
+  pin: true,
+  play: true,
+  countdown: 5
+});
+```
+
+#### close()
+Close the teleprompter window.
+
+## Protocol handlers
+The plugin registers the `obsidian://teleprompter:open` protocol handler, 
+which can be used to open the teleprompter window for a specific file or content.
+The handler accepts the same parameters as the `open` method described in the API section above.
+The only difference is that boolean values should be passed as strings:
+- 'false', '0', 'no', 'off' for `false`
+- everything else for `true`
+
+Example URL:
+```
+obsidian://teleprompter:open?file=My%20Note.md&placement=window&pin=no&play=yes&countdown=5
+```
 
 ## Installation
 
