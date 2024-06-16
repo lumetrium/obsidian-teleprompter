@@ -23,17 +23,19 @@ import { usePlayFeature } from '@/features/play'
 
 interface Props {
   size?: number | string
+  max?: number
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   size: 24,
+  max: undefined,
 })
 
 const { state } = useControlStore<ControlSliderState>()
 const { value: isPlaying } = toRefs(usePlayFeature().useStore())
 
 const badgeLabel = computed(() =>
-  state.value.value > 0 ? state.value.value.toFixed(0) : undefined,
+  +state.value.value > 0 ? Number(state.value.value).toFixed(0) : undefined,
 )
 
 const duration = computed(() => {
