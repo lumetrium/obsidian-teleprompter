@@ -900,7 +900,7 @@ open: ({
 ```
 Example usage:
 ```
-app.plugins.plugins.teleprompter.open({
+app.plugins.plugins.teleprompter.api.open({
   content: "Hello, world!",
   placement: "window",
   pin: true,
@@ -910,7 +910,8 @@ app.plugins.plugins.teleprompter.open({
 ```
 
 #### close()
-Close the teleprompter window.
+Close the teleprompter window.  
+Example usage: `app.plugins.plugins.teleprompter.api.close()`
 
 ## URI
 The plugin registers the `obsidian://teleprompter:open` protocol handler, 
