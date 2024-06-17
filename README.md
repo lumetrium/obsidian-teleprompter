@@ -749,7 +749,7 @@ Demo:
 
 Panels are versatile containers, available in both vertical and horizontal orientations, that you can insert into the Teleprompter window to showcase a variety of controls and additional information. You can add as many panels as you need and tailor their content, dimensions, positioning, and other attributes to match your specific requirements.
 
-Currently, there are two types of panels available:
+Currently, there are three types of panels available:
 
 ### Control panel
 
