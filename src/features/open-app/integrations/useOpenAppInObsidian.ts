@@ -84,6 +84,10 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
     return openWithParams({ ...params, content: await modal.prompt() })
   }
 
+  function close() {
+    workspace.detachLeavesOfType(viewType)
+  }
+
   workspace.unregisterObsidianProtocolHandler(eventName)
   workspace.registerObsidianProtocolHandler(
     eventName,
@@ -92,10 +96,15 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
 
   usePublicApiRegistry().register({
     open: openWithParams,
-    close: () => workspace.detachLeavesOfType(viewType),
+    close,
   })
 
   useCommandFeature().use('open-app', [
+    {
+      id: 'close',
+      name: 'Close',
+      callback: close,
+    },
     {
       id: 'open-app:sidebar',
       name: 'Open in sidebar',

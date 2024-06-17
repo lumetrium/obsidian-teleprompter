@@ -60,7 +60,7 @@ Open Teleprompter window and focus the note you want to read in Obsidian. Telepr
     - [Methods](#methods)
       - [open(params)](#openparams)
       - [close()](#close)
-  - [Protocol handlers](#protocol-handlers)
+  - [URI](#uri)
 - [Installation](#installation)
   - [Quick installation](#quick-installation)
   - [Manual Installation](#manual-installation)
@@ -192,9 +192,10 @@ Demo:
 <details>
   <summary>Preserve content when switching focus to other notes</summary>
 
-- When <b style="color: green">enabled</b>, the teleprompter's content will remain the same when you switch focus to other notes.
-- When <b style="color: red">disabled</b>, the teleprompter's content will change to the content of the note you're currently focused on.
-
+- When <b style="color: green">enabled</b>, the teleprompter's content will remain the same when you switch focus to other notes or edit the current note.
+- When <b style="color: red">disabled</b>, the teleprompter's content will change to the content of the note you're currently focused on and react to changes made to the note you're viewing.
+> Note: Pinned notes do not automatically update in the teleprompter
+when the content of the note changes.
 ---
 
 Commands:
@@ -209,9 +210,6 @@ Settings:
 - Active label: displayed label when enabled (default: "Pinned")
 - Inactive label: displayed label when disabled (default: "Unpinned")
 
----
-> Note: Pinned notes do not automatically update in the teleprompter 
-when the content of the note changes.
 ---
 
 Demo:
@@ -846,7 +844,7 @@ Demo:
 ## Hotkeys
 
 Use hotkeys for all possible actions within the Teleprompter window. 
-In total, the plugin provides **72 commands** that can be mapped to hotkeys.
+In total, the plugin provides **73 commands** that can be mapped to hotkeys.
 
 ### Controls hotkeys
 
@@ -875,6 +873,9 @@ Controls provide commands that are specific to their functionality. See the deta
 - Open arbitrary text in sidebar and pin it (ID: open-app:sidebar:text)
 - Open arbitrary text in a new tab and pin it (ID: open-app:new-tab:text)
 - Open arbitrary text in a new window and pin it (ID: open-app:new-window:text)
+
+#### Other
+- Close teleprompter (ID: close)
 
 ## API
 You can control some of the plugin's features programmatically using the API. 
@@ -911,7 +912,7 @@ app.plugins.plugins.teleprompter.open({
 #### close()
 Close the teleprompter window.
 
-## Protocol handlers
+## URI
 The plugin registers the `obsidian://teleprompter:open` protocol handler, 
 which can be used to open the teleprompter window for a specific file or content.
 The handler accepts the same parameters as the `open` method described in the API section above.
