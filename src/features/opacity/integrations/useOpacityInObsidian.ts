@@ -1,6 +1,7 @@
 import { type App, Platform } from 'obsidian'
 import { useOpacityFeature } from '@/features/opacity'
 import { watch } from 'vue'
+import { executeJsInAllWindows, getAllWindows } from '@/utils/electronUtils'
 
 type BrowserWindow = {
   isDestroyed: () => boolean
@@ -25,15 +26,12 @@ export function useOpacityInObsidian(options: {
     update()
   }
 
-  function update() {
+  async function update() {
     const opacity = opacityStore.value <= 10 ? 0.1 : opacityStore.value / 100
-    const windows = getAllWindows()
     const q = `!!window.document.querySelector('${viewSelector}')`
-    windows.forEach((win: any) =>
-      win.webContents
-        .executeJavaScript(q)
-        .then((hasApp: boolean) => setWinOpacity(win, hasApp ? opacity : 1)),
-    )
+    await executeJsInAllWindows(q, {
+      mapFn: (win, hasApp) => setWinOpacity(win, hasApp ? opacity : 1),
+    })
   }
 
   function setWinOpacity(win: BrowserWindow, opacity: number) {
@@ -47,12 +45,6 @@ export function useOpacityInObsidian(options: {
     app.workspace.on('window-close', apply),
     app.workspace.on('active-leaf-change', apply),
   ]
-
-  function getAllWindows() {
-    return (window as any)
-      .require('electron')
-      .remote.BrowserWindow.getAllWindows()
-  }
 
   setTimeout(apply, 500)
 
