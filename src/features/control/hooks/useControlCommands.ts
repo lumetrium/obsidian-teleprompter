@@ -107,9 +107,7 @@ export function getControlMultiSliderCommands(
       },
       {
         id: `control:${control.id}:${i}:reset`,
-        name: `${getLabel(control)} ${getMultiSliderItemLabel(
-          i,
-        )} - reset`,
+        name: `${getLabel(control)} ${getMultiSliderItemLabel(i)} - reset`,
         callback: () => (control.state.value[i] = control.state.resetValue[i]),
       },
     ]),
@@ -159,6 +157,11 @@ export function getControlSelectCommands(
       name: `${getLabel(control)} - reset`,
       callback: () => (control.state.value = control.state.resetValue),
     },
+    ...control.state.items.map((item) => ({
+      id: `control:${control.id}:select:${item.id.replace(' ', '_')}`,
+      name: `${getLabel(control)} - ${item.label}`,
+      callback: () => (control.state.value = item.id),
+    })),
   ]
 }
 

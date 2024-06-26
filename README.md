@@ -356,6 +356,16 @@ Demo:
 
 Commands:
 - Reset (ID: control:font-family:reset)
+- Default (ID: control:content:select:Default)
+- Arial (ID: control:content:select:Arial)
+- Courier New _(monospaced)_ (ID: control:content:select:Courier_New)
+- Georgia (ID: control:content:select:Georgia)
+- Helvetica (ID: control:content:select:Helvetica)
+- Times New Roman (ID: control:content:select:Times_New_Roman)
+- Trebuchet MS (ID: control:content:select:Trebuchet_MS)
+- Tahoma (ID: control:content:select:Tahoma)
+- Roboto (ID: control:content:select:Roboto)
+- Verdana (ID: control:content:select:Verdana)
 
 ---
 
@@ -574,6 +584,8 @@ Demo:
 
 Commands:
 - Reset (ID: control:content:reset)
+- Markdown (ID: control:content:select:content-md)
+- Plain text (ID: control:content:select:content-plain)
 
 ---
 
@@ -844,7 +856,7 @@ Demo:
 ## Hotkeys
 
 Use hotkeys for all possible actions within the Teleprompter window. 
-In total, the plugin provides **73 commands** that can be mapped to hotkeys.
+In total, the plugin provides **85 commands** that can be mapped to hotkeys.
 
 ### Controls hotkeys
 
