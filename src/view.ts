@@ -35,7 +35,7 @@ export class TeleprompterView extends ItemView {
     const viewSelector = `.${VIEW_CLASS}`
 
     this.unloadQueue.push(
-      useFullscreenInObsidian({ containerEl }).unload,
+      useFullscreenInObsidian({ containerEl, viewSelector }).unload,
       useOpacityInObsidian({ app, containerEl, viewSelector }).unload,
       useWakeLockInObsidian({ app, containerEl }).unload,
     )

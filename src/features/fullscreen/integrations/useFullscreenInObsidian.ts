@@ -1,20 +1,28 @@
 import { useOpenSettingsFeature } from '@/features/open-settings'
 import { useFullscreenFeature } from '@/features/fullscreen'
 import { watch } from 'vue'
+import { Platform } from 'obsidian'
+import {
+  dispatchKeyboardEventInAllWindows,
+  executeJsInAllWindows,
+  showWindowsWithSelector,
+} from '@/utils/electronUtils'
 
 export function useFullscreenInObsidian(options: {
   containerEl: HTMLElement
+  viewSelector: string
 }): { unload: () => void } {
-  const { containerEl: el } = options
+  const { containerEl: el, viewSelector } = options
 
   const openSettingsFeature = useOpenSettingsFeature()
   const fullscreenStore = useFullscreenFeature().useStore()
 
   const unwatch = watch(
     () => fullscreenStore.value,
-    (value) => {
-      if (value && !isFullscreen()) el.requestFullscreen()
-      else if (!value && isFullscreen()) activeDocument.exitFullscreen()
+    async (value) => {
+      const isFullscreen = await getIsFullscreen()
+      if (value && !isFullscreen) enterFullscreen()
+      else if (!value && isFullscreen) exitFullscreen()
     },
   )
 
@@ -27,16 +35,43 @@ export function useFullscreenInObsidian(options: {
     if (fullscreenStore.value && !el.checkVisibility()) turnOff()
   }, 2000)
 
-  function update() {
-    fullscreenStore.value = isFullscreen()
+  async function update() {
+    fullscreenStore.value = await getIsFullscreen()
   }
 
   function turnOff() {
     fullscreenStore.value = false
   }
 
-  function isFullscreen() {
-    return activeDocument.fullscreenElement === el
+  async function getIsFullscreen() {
+    if (Platform.isMobileApp) {
+      return activeDocument.fullscreenElement === el
+    } else {
+      const q = `window.document.fullscreenElement?.matches('${viewSelector}')`
+      return executeJsInAllWindows(q).then((matches) => matches.some(Boolean))
+    }
+  }
+
+  async function enterFullscreen() {
+    if (Platform.isDesktopApp) {
+      await Promise.all([
+        dispatchKeyboardEventInAllWindows(), // otherwise throws "Failed to execute 'requestFullscreen' on 'Element': API can only be initiated by a user gesture."
+        showWindowsWithSelector(viewSelector),
+      ])
+    }
+
+    return el.requestFullscreen()
+  }
+
+  async function exitFullscreen() {
+    if (Platform.isMobileApp) {
+      return activeDocument.exitFullscreen()
+    } else {
+      await executeJsInAllWindows(
+        `window.document.fullscreenElement?.matches('${viewSelector}')` +
+          `&& window.document.exitFullscreen()`,
+      )
+    }
   }
 
   update()
