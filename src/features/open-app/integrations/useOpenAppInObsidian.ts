@@ -28,7 +28,7 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
   unload: () => void
 } {
   const { app, viewType } = options
-  const eventName = `${APP_ID}:open`
+  const actionName = `${APP_ID}-open`
 
   const workspace = app.workspace as Workspace & {
     registerObsidianProtocolHandler: (
@@ -55,7 +55,7 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
       if (file) {
         updateContent(await app.vault.cachedRead(file))
       } else {
-        console.error(`[${eventName}] File not found: "${filepath}"`)
+        console.error(`[${APP_ID}] File not found: "${filepath}"`)
       }
     }
 
@@ -88,9 +88,9 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
     workspace.detachLeavesOfType(viewType)
   }
 
-  workspace.unregisterObsidianProtocolHandler(eventName)
+  workspace.unregisterObsidianProtocolHandler(actionName)
   workspace.registerObsidianProtocolHandler(
-    eventName,
+    actionName,
     openWithParams as ObsidianProtocolHandler,
   )
 
@@ -156,7 +156,7 @@ export function useOpenAppInObsidian(options: { app: App; viewType: string }): {
 
   return {
     unload() {
-      workspace.unregisterObsidianProtocolHandler(eventName)
+      workspace.unregisterObsidianProtocolHandler(actionName)
     },
   }
 }

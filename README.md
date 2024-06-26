@@ -914,7 +914,7 @@ Close the teleprompter window.
 Example usage: `app.plugins.plugins.teleprompter.api.close()`
 
 ## URI
-The plugin registers the `obsidian://teleprompter:open` protocol handler, 
+The plugin registers the `obsidian://teleprompter-open` protocol handler, 
 which can be used to open the teleprompter window for a specific file or content.
 The handler accepts the same parameters as the `open` method described in the API section above.
 The only difference is that boolean values should be passed as strings:
@@ -923,7 +923,7 @@ The only difference is that boolean values should be passed as strings:
 
 Example URL:
 ```
-obsidian://teleprompter:open?file=My%20Note.md&placement=window&pin=no&play=yes&countdown=5
+obsidian://teleprompter-open?file=My%20Note.md&placement=window&pin=no&play=yes&countdown=5
 ```
 
 ## Installation
