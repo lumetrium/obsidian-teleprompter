@@ -158,7 +158,7 @@ export function getControlSelectCommands(
       callback: () => (control.state.value = control.state.resetValue),
     },
     ...control.state.items.map((item) => ({
-      id: `control:${control.id}:select:${item.id.replace(' ', '_')}`,
+      id: `control:${control.id}:select:${item.id.replaceAll(' ', '_')}`,
       name: `${getLabel(control)} - ${item.label}`,
       callback: () => (control.state.value = item.id),
     })),
