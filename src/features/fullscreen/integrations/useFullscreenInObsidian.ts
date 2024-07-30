@@ -44,12 +44,9 @@ export function useFullscreenInObsidian(options: {
   }
 
   async function getIsFullscreen() {
-    if (Platform.isMobileApp) {
-      return activeDocument.fullscreenElement === el
-    } else {
-      const q = `window.document.fullscreenElement?.matches('${viewSelector}')`
-      return executeJsInAllWindows(q).then((matches) => matches.some(Boolean))
-    }
+    if (Platform.isMobileApp) return activeDocument.fullscreenElement === el
+    const q = `window.document.fullscreenElement?.matches('${viewSelector}')`
+    return executeJsInAllWindows(q).then((matches) => matches.some(Boolean))
   }
 
   async function enterFullscreen() {
@@ -64,14 +61,11 @@ export function useFullscreenInObsidian(options: {
   }
 
   async function exitFullscreen() {
-    if (Platform.isMobileApp) {
-      return activeDocument.exitFullscreen()
-    } else {
-      await executeJsInAllWindows(
-        `window.document.fullscreenElement?.matches('${viewSelector}')` +
-          `&& window.document.exitFullscreen()`,
-      )
-    }
+    if (Platform.isMobileApp) return activeDocument.exitFullscreen()
+    await executeJsInAllWindows(
+      `window.document.fullscreenElement?.matches('${viewSelector}')` +
+        `&& window.document.exitFullscreen()`,
+    )
   }
 
   update()

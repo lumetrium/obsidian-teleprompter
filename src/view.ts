@@ -1,4 +1,4 @@
-import { ItemView, type WorkspaceLeaf } from 'obsidian'
+import { ItemView, Platform, type WorkspaceLeaf } from 'obsidian'
 import { type App as VueApp, createApp } from 'vue'
 import App from './App.vue'
 import { createVuetifyWithOptions } from './libs/vuetify'
@@ -12,6 +12,7 @@ import {
 import { useOpacityInObsidian } from '@/features/opacity/integrations/useOpacityInObsidian'
 import { useFullscreenInObsidian } from '@/features/fullscreen/integrations/useFullscreenInObsidian'
 import { useWakeLockInObsidian } from '@/features/wake-lock/integrations/useWakeLockInObsidian'
+import { useFullscreenInObsidianIos } from '@/features/fullscreen/integrations/useFullscreenInObsidianIos'
 
 export class TeleprompterView extends ItemView {
   vueapp: VueApp
@@ -35,7 +36,9 @@ export class TeleprompterView extends ItemView {
     const viewSelector = `.${VIEW_CLASS}`
 
     this.unloadQueue.push(
-      useFullscreenInObsidian({ containerEl, viewSelector }).unload,
+      Platform.isIosApp
+        ? useFullscreenInObsidianIos({ containerEl }).unload
+        : useFullscreenInObsidian({ containerEl, viewSelector }).unload,
       useOpacityInObsidian({ app, containerEl, viewSelector }).unload,
       useWakeLockInObsidian({ app, containerEl }).unload,
     )
