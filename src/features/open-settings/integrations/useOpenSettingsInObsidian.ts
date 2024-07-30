@@ -1,5 +1,6 @@
 import type { App } from 'obsidian'
 import { useOpenSettingsFeature } from '@/features/open-settings'
+import { APP_ID } from '@/constants'
 
 export function useOpenSettingsInObsidian(options: { app: App }): {
   unload: () => void
@@ -11,7 +12,7 @@ export function useOpenSettingsInObsidian(options: { app: App }): {
 
   function handler() {
     setting.open()
-    setting.openTabById('teleprompter')
+    setting.openTabById(APP_ID)
   }
 
   openSettingsFeature.addEventListener('click', handler)
