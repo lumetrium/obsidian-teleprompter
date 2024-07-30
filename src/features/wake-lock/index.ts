@@ -14,8 +14,12 @@ export const useWakeLockFeature = defineFeature('wake-lock', (id) => {
 
   async function request() {
     if (!isSupported || !isEnabled.value || wakeLock) return
-    wakeLock = await navigator.wakeLock.request('screen')
-    isActive.value = !wakeLock.released
+    try {
+      wakeLock = await navigator.wakeLock.request('screen')
+      isActive.value = !wakeLock.released
+    } catch (e) {
+      isActive.value = wakeLock ? !wakeLock.released : false
+    }
   }
 
   async function release() {
@@ -53,6 +57,6 @@ export const useWakeLockFeature = defineFeature('wake-lock', (id) => {
       reduce: (state) => ({
         isEnabled: isEnabled.value,
       }),
-    }
+    },
   }
 })
