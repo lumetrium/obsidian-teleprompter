@@ -1,6 +1,6 @@
 {
   "name": "obsidian-teleprompter",
-  "version": "1.4.5",
+  "version": "1.4.7",
   "description": "Teleprompter plugin for Obsidian",
   "main": "main.js",
   "scripts": {
