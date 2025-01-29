@@ -24,6 +24,7 @@
     "vue": "^3.3.4",
     "vue-draggable-plus": "^0.5.0",
     "vue-markdown-render": "^2.2.1",
+    "markdown-it-callouts": "^1.0.3",
     "vuetify": "3.6.8"
   },
   "devDependencies": {

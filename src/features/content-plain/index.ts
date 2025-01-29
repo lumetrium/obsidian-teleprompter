@@ -1,12 +1,12 @@
 import ContentPlain from '@/features/content-plain/ContentPlain.vue'
 import { defineFeature } from '@/features/feature'
 import { useContentFeature } from '@/features/content'
-import { mdiFormatTextVariant } from '@mdi/js'
+import { mdiAlphabeticalVariant } from '@mdi/js'
 
 export const useContentPlainFeature = defineFeature('content-plain', (id) => {
-	useContentFeature().useView({
+  useContentFeature().useView({
     id,
-    icon: mdiFormatTextVariant,
+    icon: mdiAlphabeticalVariant,
     defaults: {
       name: 'Plain text',
     },
@@ -15,5 +15,5 @@ export const useContentPlainFeature = defineFeature('content-plain', (id) => {
     },
   })
 
-	return {}
+  return {}
 })
