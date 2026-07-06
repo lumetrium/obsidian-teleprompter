@@ -31,6 +31,14 @@ const height = computed(() => {
 .v-app-bar {
   background: var(--background-secondary) !important;
   box-shadow: none !important;
+  transition-property:
+    transform,
+    max-width,
+    left,
+    right,
+    top,
+    bottom,
+    box-shadow !important;
   border-style: solid;
   border-color: rgba(var(--v-border-color), var(--v-border-opacity));
 

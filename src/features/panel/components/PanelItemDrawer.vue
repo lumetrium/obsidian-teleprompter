@@ -30,6 +30,14 @@ const { panel, state } = usePanelStore()
   background: var(--background-secondary) !important;
   position: relative;
   border: none;
+  transition-property:
+    box-shadow,
+    transform,
+    visibility,
+    left,
+    right,
+    top,
+    bottom !important;
 
   &.v-navigation-drawer--left {
     box-shadow: 1px 0 0 0 rgba(var(--v-border-color), var(--v-border-opacity));
