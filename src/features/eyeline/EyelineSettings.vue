@@ -24,10 +24,9 @@
       v-if="!!background && background !== 'follow-content'"
       class="mb-3 pb-4 border-b"
     >
-      <v-color-picker
+      <ColorPicker
         v-model="background"
         elevation="0"
-        width="100%"
       />
     </div>
 
@@ -45,10 +44,9 @@
     </SettingField>
 
     <div v-if="!!indicator.color">
-      <v-color-picker
+      <ColorPicker
         v-model="indicator.color"
         elevation="0"
-        width="100%"
       />
     </div>
   </div>
@@ -60,6 +58,7 @@ import { computed, unref } from 'vue'
 import type { EyelinePanelState } from '@/features/eyeline/types'
 import SettingField from '@/features/settings/components/elements/SettingField.vue'
 import SelectInput from '@/components/SelectInput.vue'
+import ColorPicker from '@/components/ColorPicker.vue'
 
 const { state } = useSettingItemStore<EyelinePanelState>()
 const indicator = computed({
